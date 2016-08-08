@@ -30,6 +30,7 @@ import rx.schedulers.Schedulers;
 public class MainActivity extends FragmentActivity {
     ImageView imageView;
     Fragment meiziFragment;
+    Fragment androidFragment;
     List<Fragment> fragmentList;
     String [] TITLE;
     ViewPager myViewPager;
@@ -47,9 +48,11 @@ public class MainActivity extends FragmentActivity {
     }
     public void InitVariable(){
         meiziFragment=new MeiziFragment(this);
+        androidFragment=new AndroidFragment(this);
         fragmentList=new ArrayList<Fragment>();
         fragmentList.add(meiziFragment);
-        TITLE=new String[]{"MEIZI"};
+        fragmentList.add(androidFragment);
+        TITLE=new String[]{"MEIZI","Android"};
     }
    public void InitListener(){
        myTabPageIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

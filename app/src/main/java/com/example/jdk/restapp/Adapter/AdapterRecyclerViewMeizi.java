@@ -50,6 +50,7 @@ public class AdapterRecyclerViewMeizi extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyViewHolder) {
+            Log.i("Logcat","on"+meiziList.get(position).url);
             Picasso.with(mContext).load(meiziList.get(position).url).into(((MyViewHolder)holder).meiziImage);
         }
        // holder.meiziImage.setImageBitmap();

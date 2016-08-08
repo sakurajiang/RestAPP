@@ -74,7 +74,7 @@ public class MeiziFragment extends BaseFragment{
                 Log.i("Logcat","meiziList"+meiziList);
                 adapterRecyclerViewMeizi=new AdapterRecyclerViewMeizi(mContext, meiziList);
                 myRecyclerView.setAdapter(adapterRecyclerViewMeizi);
-               adapterRecyclerViewMeizi.notifyDataSetChanged();
+             //  adapterRecyclerViewMeizi.notifyDataSetChanged();
             }
         };
         MyObserverOn(meiziDataSubscriber);

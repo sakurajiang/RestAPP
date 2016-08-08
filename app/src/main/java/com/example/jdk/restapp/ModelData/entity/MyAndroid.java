@@ -1,13 +1,11 @@
 package com.example.jdk.restapp.ModelData.entity;
 
-import android.content.Context;
-
 import java.util.Date;
 
 /**
- * Created by JDK on 2016/8/2.
+ * Created by JDK on 2016/8/7.
  */
-public class Meizi extends Base{
+public class MyAndroid extends Base{
     public String type;//干货类型，如Android，iOS，福利等
     public String url;//链接地址
     public String who;//作者
