@@ -4,9 +4,12 @@ import com.example.jdk.restapp.ModelData.Constant;
 import com.example.jdk.restapp.ModelData.GankData;
 import com.example.jdk.restapp.ModelData.GanHuoData;
 import com.example.jdk.restapp.ModelData.MeiziData;
+import com.example.jdk.restapp.ModelData.MyAndroidData;
 import com.example.jdk.restapp.ModelData.RestVideoData;
 import com.example.jdk.restapp.ModelData.entity.Gank;
 import com.example.jdk.restapp.ModelData.entity.Meizi;
+
+import java.util.List;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -18,6 +21,8 @@ import rx.Observable;
 public interface gankAPI {
     @GET("data/福利/" + Constant.MEIZI_SIZE + "/{page}")
     Observable<MeiziData> getMeiziData(@Path("page") int page);
+    @GET("data/Android/" +Constant.ANDROID_SIZE+ "/{page}")
+    Observable<MyAndroidData> getAndroidData(@Path("page") int page);
     @GET("data/休息视频/"+Constant.GANK_SIZE+"/{page}")
     Observable<RestVideoData> getRestVideoData(@Path("page") int page);
     //请求某天干货数据

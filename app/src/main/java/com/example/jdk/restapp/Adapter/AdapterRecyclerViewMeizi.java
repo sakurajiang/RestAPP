@@ -29,6 +29,7 @@ public class AdapterRecyclerViewMeizi extends RecyclerView.Adapter<RecyclerView.
     public AdapterRecyclerViewMeizi(Context context,List<Meizi> meiziList) {
         this.mContext=context;
         this.meiziList=meiziList;
+        Log.i("Logcat","meizi"+meiziList.size());
         Log.i("Logcat","Adapter");
     }
     public LayoutInflater getInflater(){
@@ -42,6 +43,7 @@ public class AdapterRecyclerViewMeizi extends RecyclerView.Adapter<RecyclerView.
         }
         View v=getInflater().inflate(R.layout.meizi_item,parent,false);
         myViewHolder=new MyViewHolder(v);
+        Log.i("Logcat","onCreate");
         return myViewHolder;
     }
 
@@ -50,6 +52,7 @@ public class AdapterRecyclerViewMeizi extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof MyViewHolder) {
+            Log.i("Logcat","on"+meiziList.get(position).url);
             Picasso.with(mContext).load(meiziList.get(position).url).into(((MyViewHolder)holder).meiziImage);
         }
        // holder.meiziImage.setImageBitmap();
@@ -58,6 +61,7 @@ public class AdapterRecyclerViewMeizi extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemCount() {
+//        Log.i("Logcat","getItemCont"+meiziList.size());
        return meiziList.size()>0?meiziList.size():1;
        // return meiziList.size();
     }

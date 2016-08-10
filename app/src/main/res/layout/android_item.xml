@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+    <data>
+        <variable
+            name="myAndroid"
+            type="com.example.jdk.restapp.ModelData.entity.MyAndroid"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="70dp"
+        >
+        <TextView
+            android:id="@+id/android_item_id_desc_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="@{myAndroid.desc}"/>
+        <TextView
+            android:id="@+id/android_item_id_who_tv"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@{myAndroid.who}"
+            android:textSize="10sp"
+            android:layout_below="@id/android_item_id_desc_tv"/>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:hint="@{String.valueOf(myAndroid.createdAt)}"
+            android:layout_below="@id/android_item_id_desc_tv"
+            android:layout_toRightOf="@id/android_item_id_who_tv"/>
+
+    </RelativeLayout>
+</layout>

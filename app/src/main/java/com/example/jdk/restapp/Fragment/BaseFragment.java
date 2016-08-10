@@ -18,7 +18,7 @@ import rx.schedulers.Schedulers;
 public class BaseFragment extends Fragment {
     private Subscription subscription;
     public Subscription MyObserverOn(Subscriber subscriber){
-       subscription= ReturnRetrofit.getInstance().getMyGankApiRetrofit().getMeiziData(1)
+       subscription= ReturnRetrofit.getInstance().getMyGankApiRetrofit().getMeiziData(2)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
