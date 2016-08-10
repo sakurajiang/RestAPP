@@ -67,7 +67,11 @@ public class MeiziFragment extends BaseFragment{
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+<<<<<<< HEAD
         myRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+=======
+        myRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+>>>>>>> origin/master
         s();
        o(1);
     }
@@ -95,7 +99,11 @@ public class MeiziFragment extends BaseFragment{
                 Log.i("Logcat","meiziList"+meiziList.get(1).url);
                adapterRecyclerViewMeizi=new AdapterRecyclerViewMeizi(mContext, meiziList);
                 myRecyclerView.setAdapter(adapterRecyclerViewMeizi);
+<<<<<<< HEAD
               adapterRecyclerViewMeizi.notifyDataSetChanged();
+=======
+             //  adapterRecyclerViewMeizi.notifyDataSetChanged();
+>>>>>>> origin/master
             }
         };
 

@@ -21,7 +21,11 @@ import rx.Observable;
 public interface gankAPI {
     @GET("data/福利/" + Constant.MEIZI_SIZE + "/{page}")
     Observable<MeiziData> getMeiziData(@Path("page") int page);
+<<<<<<< HEAD
     @GET("data/Android/" +Constant.ANDROID_SIZE+ "/{page}")
+=======
+    @GET("data/Android/" +Constant.MEIZI_SIZE+ "/{page}")
+>>>>>>> origin/master
     Observable<MyAndroidData> getAndroidData(@Path("page") int page);
     @GET("data/休息视频/"+Constant.GANK_SIZE+"/{page}")
     Observable<RestVideoData> getRestVideoData(@Path("page") int page);
