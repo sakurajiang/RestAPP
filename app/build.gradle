@@ -7,7 +7,7 @@ android {
         enabled true
     }
     defaultConfig {
-        applicationId "com.example.jdk.restapp"
+        applicationId "com.jdk.gank.restapp"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
@@ -37,4 +37,7 @@ dependencies {
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
     compile 'com.android.support:recyclerview-v7:23.2.1'
     compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.3'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.afollestad.material-dialogs:commons:0.9.0.1'
+    compile 'com.android.support:percent:23.2.0'
 }

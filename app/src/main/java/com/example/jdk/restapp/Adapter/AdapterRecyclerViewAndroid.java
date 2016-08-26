@@ -12,14 +12,27 @@ import android.view.ViewGroup;
 
 import com.example.jdk.restapp.Activity.ShowWebViewActivity;
 import com.example.jdk.restapp.ModelData.MyAndroidData;
+<<<<<<< HEAD
+import com.example.jdk.restapp.ModelData.entity.MyAndroid;
 import com.example.jdk.restapp.R;
 import com.example.jdk.restapp.databinding.AndroidItemBinding;
 
+import java.util.List;
+
+=======
+import com.example.jdk.restapp.R;
+import com.example.jdk.restapp.databinding.AndroidItemBinding;
+
+>>>>>>> origin/master
 /**
  * Created by JDK on 2016/8/7.
  */
 public class AdapterRecyclerViewAndroid extends RecyclerView.Adapter<AdapterRecyclerViewAndroid.MyViewHolder> {
+<<<<<<< HEAD
+    private List<MyAndroid> myAndroidList;
+=======
     private MyAndroidData myAndroidData;
+>>>>>>> origin/master
     private Context mContext;
     private MyViewHolder myViewHolder;
     private androidRecyclerViewItemOnClickListener myAndroidRecyclerViewItemOnClickListener;
@@ -29,8 +42,13 @@ public class AdapterRecyclerViewAndroid extends RecyclerView.Adapter<AdapterRecy
     public void setAndroidRecyclerViewItemOnClickListener(androidRecyclerViewItemOnClickListener myAndroidRecyclerViewItemOnClickListener){
         this.myAndroidRecyclerViewItemOnClickListener=myAndroidRecyclerViewItemOnClickListener;
     }
+<<<<<<< HEAD
+    public AdapterRecyclerViewAndroid(Context mContext,List<MyAndroid> myAndroidList) {
+        this.myAndroidList=myAndroidList;
+=======
     public AdapterRecyclerViewAndroid( MyAndroidData myAndroidData, Context mContext) {
         this.myAndroidData=myAndroidData;
+>>>>>>> origin/master
         this.mContext=mContext;
     }
     public LayoutInflater getInflater(){
@@ -47,10 +65,15 @@ public class AdapterRecyclerViewAndroid extends RecyclerView.Adapter<AdapterRecy
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
+<<<<<<< HEAD
+        AndroidItemBinding androidItemBinding=DataBindingUtil.bind(holder.itemView);
+        androidItemBinding.setMyAndroid(myAndroidList.get(position));
+=======
         Log.i("Logcat","onBindViewHolder111"+myAndroidData.results);
         Log.i("Logcat", "onBindViewHolder" + myAndroidData.results.get(position).url);
         AndroidItemBinding androidItemBinding=DataBindingUtil.bind(holder.itemView);
         androidItemBinding.setMyAndroid(myAndroidData.results.get(position));
+>>>>>>> origin/master
         //当变量的值更新的时候，binding 对象将在下个更新周期中更新,但是会有一点时间间隔
         holder.getViewDataBinding().executePendingBindings();
         //设置回调
@@ -58,7 +81,11 @@ public class AdapterRecyclerViewAndroid extends RecyclerView.Adapter<AdapterRecy
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+<<<<<<< HEAD
+                    myAndroidRecyclerViewItemOnClickListener.androidRecyclerViewItemObClick(myAndroidList.get(position).url);
+=======
                     myAndroidRecyclerViewItemOnClickListener.androidRecyclerViewItemObClick(myAndroidData.results.get(position).url);
+>>>>>>> origin/master
                 }
             });
         }
@@ -66,8 +93,12 @@ public class AdapterRecyclerViewAndroid extends RecyclerView.Adapter<AdapterRecy
 
     @Override
     public int getItemCount() {
+<<<<<<< HEAD
+        return myAndroidList.size()==0?1:myAndroidList.size();
+=======
         Log.i("Logcat", "ItemCountAndroid" + myAndroidData.results.size());
         return myAndroidData.results.size()==0?1:myAndroidData.results.size();
+>>>>>>> origin/master
     }
     static class MyViewHolder extends RecyclerView.ViewHolder{
         ViewDataBinding viewDataBinding;

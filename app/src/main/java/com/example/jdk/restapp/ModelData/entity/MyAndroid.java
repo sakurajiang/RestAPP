@@ -12,7 +12,11 @@ public class MyAndroid extends Base{
     public String url;//链接地址
     public String who;//作者
     public String desc;//干货内容的描述
+<<<<<<< HEAD
+    public boolean isCollected;
+=======
     public boolean used;
+>>>>>>> origin/master
     public Date createdAt;
     public Date updatedAt;
     public Date publishedAt;

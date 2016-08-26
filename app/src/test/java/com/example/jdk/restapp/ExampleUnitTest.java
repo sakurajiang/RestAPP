@@ -1,4 +1,4 @@
-package com.example.jdk.restapp;
+package com.jdk.gank.restapp;
 
 import org.junit.Test;
 

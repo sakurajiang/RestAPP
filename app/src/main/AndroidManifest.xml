@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jdk.restapp">
+    package="com.jdk.gank.restapp">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name="com.jdk.gank.restapp.Activity.MainActivity"
+            android:theme="@style/StyledIndicators"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.ShowWebViewActivity"/>
+        <activity android:name="com.jdk.gank.restapp.Activity.ShowWebViewActivity"
+            />
+        <activity android:name="com.jdk.gank.restapp.Activity.ShowBigBitmapActivity"/>
+        <activity android:name="com.jdk.gank.restapp.Activity.UserActivity"/>
     </application>
 <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

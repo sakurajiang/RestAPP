@@ -1,6 +1,7 @@
 package com.example.jdk.restapp.HttpUtils;
 
 import com.example.jdk.restapp.ModelData.Constant;
+import com.example.jdk.restapp.ModelData.FrontData;
 import com.example.jdk.restapp.ModelData.GankData;
 import com.example.jdk.restapp.ModelData.GanHuoData;
 import com.example.jdk.restapp.ModelData.MeiziData;
@@ -23,10 +24,17 @@ public interface gankAPI {
     Observable<MeiziData> getMeiziData(@Path("page") int page);
 <<<<<<< HEAD
     @GET("data/Android/" +Constant.ANDROID_SIZE+ "/{page}")
+    Observable<MyAndroidData> getAndroidData(@Path("page") int page);
+    @GET("data/前端/" +Constant.FRONT_SIZE+ "/{page}")
+    Observable<FrontData> getFrontData(@Path("page") int page);
+=======
+<<<<<<< HEAD
+    @GET("data/Android/" +Constant.ANDROID_SIZE+ "/{page}")
 =======
     @GET("data/Android/" +Constant.MEIZI_SIZE+ "/{page}")
 >>>>>>> origin/master
     Observable<MyAndroidData> getAndroidData(@Path("page") int page);
+>>>>>>> origin/master
     @GET("data/休息视频/"+Constant.GANK_SIZE+"/{page}")
     Observable<RestVideoData> getRestVideoData(@Path("page") int page);
     //请求某天干货数据
