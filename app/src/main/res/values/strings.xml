@@ -1,4 +1,18 @@
 <resources>
-    <string name="app_name">RestAPP</string>
+    <string name="app_name">小憩干货</string>
     <string name="meizi_none_item">没有传入任何数据</string>
+    <string name="user_collection">我的收藏</string>
+    <string name="collection_none_item">没有收藏任何数据</string>
+    <string name="who_none">佚名</string>
+    <string name="icons">&#xe7d5;</string>
+    <string name="icon_shake">&#x354d;</string>
+    <string name="icon_search">&#xe62f;</string>
+    <string name="icon_drawer">&#xe614;</string>
+    <string name="icon_watch">&#xe721;</string>
+    <bool name="collection_none_item_clickable">false</bool>
+    <bool name="collection_have_item_clickable">true</bool>
+    <array name="table_name">
+        <item>WebViewTextURL</item>
+    </array>
+
 </resources>
