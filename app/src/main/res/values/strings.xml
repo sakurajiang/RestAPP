@@ -5,10 +5,13 @@
     <string name="collection_none_item">没有收藏任何数据</string>
     <string name="who_none">佚名</string>
     <string name="icons">&#xe7d5;</string>
+<<<<<<< HEAD
     <string name="icon_shake">&#x354d;</string>
     <string name="icon_search">&#xe62f;</string>
     <string name="icon_drawer">&#xe614;</string>
     <string name="icon_watch">&#xe721;</string>
+=======
+>>>>>>> a17cc0a1ef0b8332501d201e889ff19771b8fe8c
     <bool name="collection_none_item_clickable">false</bool>
     <bool name="collection_have_item_clickable">true</bool>
     <array name="table_name">

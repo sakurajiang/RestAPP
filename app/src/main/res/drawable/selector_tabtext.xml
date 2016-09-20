@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+<<<<<<< HEAD
     <item android:state_selected="true" android:color="@color/themeColor" />
     <item android:state_pressed="true" android:color="@color/md_red_900" />
     <item android:color="#7D7D7D"/>
+=======
+    <item android:state_selected="true" android:color="@color/white" />
+    <item android:state_pressed="true" android:color="@color/md_red_900" />
+    <item android:state_focused="true" android:color="@color/md_brown_600" />
+    <item android:color="@color/md_blue_300"/>
+>>>>>>> a17cc0a1ef0b8332501d201e889ff19771b8fe8c
 </selector>

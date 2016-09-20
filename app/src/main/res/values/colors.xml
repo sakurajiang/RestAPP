@@ -13,7 +13,11 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="grey">#515151</color>
+<<<<<<< HEAD
     <color name="themeColor">#ffce3d3a</color>
     <color name="toolbarTextColor">#ffffffff</color>
     <color name="normalBackground">#fff2f4f5</color>
+=======
+
+>>>>>>> a17cc0a1ef0b8332501d201e889ff19771b8fe8c
 </resources>

@@ -8,8 +8,13 @@
         android:supportsRtl="true"
         android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Activity.MainActivity"
             android:theme="@style/ImageTranslucentTheme"
+=======
+        <activity android:name="com.jdk.gank.restapp.Activity.MainActivity"
+            android:theme="@style/StyledIndicators"
+>>>>>>> a17cc0a1ef0b8332501d201e889ff19771b8fe8c
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a17cc0a1ef0b8332501d201e889ff19771b8fe8c
         <activity android:name="com.jdk.gank.restapp.Activity.ShowWebViewActivity"
             />
         <activity android:name="com.jdk.gank.restapp.Activity.ShowBigBitmapActivity"/>

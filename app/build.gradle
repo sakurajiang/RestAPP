@@ -40,5 +40,8 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.3.0'
     compile 'com.afollestad.material-dialogs:commons:0.9.0.1'
     compile 'com.android.support:percent:23.2.0'
+<<<<<<< HEAD
     compile 'com.android.support:design:23.1.1'
+=======
+>>>>>>> a17cc0a1ef0b8332501d201e889ff19771b8fe8c
 }
