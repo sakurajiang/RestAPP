@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+   >
+    <data>
+        <import type="com.example.jdk.restapp.Utils.ChangeTimeFormat"/>
+        <variable
+            name="urlTableData"
+            type="com.example.jdk.restapp.ModelData.entity.URLTableData"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="70dp"
+        >
+        <TextView
+            android:id="@+id/id_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:text="@{String.valueOf(urlTableData.id)}"/>
+        <TextView
+            android:id="@+id/collection_item_id_desc_tv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginLeft="5dp"
+            android:text="@{urlTableData.desc==null?@string/collection_none_item:urlTableData.desc}"/>
+        <TextView
+            android:id="@+id/collection_item_id_who_tv"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:hint="@{urlTableData.who??@string/who_none}"
+            android:textSize="10sp"
+            android:layout_marginLeft="5dp"
+           android:clickable="@bool/collection_have_item_clickable"
+            android:layout_below="@id/collection_item_id_desc_tv"/>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:hint="@{urlTableData.createdAt==null?urlTableData.createdAt:ChangeTimeFormat.changeToYearMonthDay(urlTableData.createdAt)}"
+            android:layout_below="@id/collection_item_id_desc_tv"
+            android:layout_toRightOf="@id/collection_item_id_who_tv"/>
+
+    </RelativeLayout>
+</layout>

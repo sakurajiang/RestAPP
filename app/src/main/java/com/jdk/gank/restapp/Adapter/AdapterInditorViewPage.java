@@ -1,4 +1,4 @@
-package com.example.jdk.restapp.Adapter;
+package com.jdk.gank.restapp.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

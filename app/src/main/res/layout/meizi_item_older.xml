@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <com.example.jdk.restapp.Progress.RatioImageView
+        android:id="@+id/meizi_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_launcher"
+        />
+    <RelativeLayout
+        android:id="@+id/video_item_id_rl"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:clickable="true"
+        >
+        <TextView
+            android:id="@+id/video_item_id_desc_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:maxLines="3"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:id="@+id/video_item_id_who_tv"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_below="@id/video_item_id_desc_tv"/>
+        <TextView
+            android:id="@+id/video_item_id_createtime"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:layout_below="@id/video_item_id_desc_tv"
+            android:layout_toRightOf="@id/video_item_id_who_tv"/>
+    </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

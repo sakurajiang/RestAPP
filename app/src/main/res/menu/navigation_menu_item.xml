@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/top_group"
+        android:checkableBehavior="single">
+    <item
+        android:id="@+id/navigation_sort"
+        android:icon="@drawable/ic_sort_24dp"
+        android:checked="true"
+        android:title="@string/navigation_menu_sort" />
+    <item
+        android:id="@+id/navigation_collection"
+        android:icon="@drawable/ic_collection_24dp"
+        android:title="@string/navigation_menu_collection" />
+    </group>
+    <group
+        android:id="@+id/bottom_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navigation_share"
+            android:icon="@drawable/ic_share_24dp"
+            android:title="@string/navigation_menu_share" />
+        <item
+            android:id="@+id/navigation_about_project"
+            android:icon="@drawable/ic_about_project_24dp"
+            android:title="@string/navigation_menu_about_project" />
+        <item
+            android:id="@+id/navigation_about_author"
+            android:icon="@drawable/ic__about_author_24dp"
+            android:title="@string/navigation_menu_about_author" />
+    </group>
+
+
+
+
+</menu>
