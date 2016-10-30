@@ -4,79 +4,69 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.jdk.restapp.Adapter.AdapterRecyclerViewMeizi;
-import com.example.jdk.restapp.ModelData.MeiziData;
-import com.example.jdk.restapp.ModelData.entity.Meizi;
+import com.example.jdk.restapp.HttpUtils.RequestData;
+import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
+import com.example.jdk.restapp.ModelData.entity.Base;
 import com.example.jdk.restapp.R;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import rx.Subscriber;
-import rx.Subscription;
-
 /**
  * Created by JDK on 2016/8/4.
  */
-public class MeiziFragment extends BaseFragment{
-    private RecyclerView myRecyclerView;
-    private Context mContext;
-    private List<Meizi> meiziList;
-    private AdapterRecyclerViewMeizi adapterRecyclerViewMeizi;
-    public MeiziFragment(Context context) {
-        ;this.mContext=context;
+public class MeiziFragment extends BaseFragment {
+    private static Context mContext;
+    private List<Base> meiziList;
+    public MeiziFragment() {
+        super(R.layout.fragment_watch_meizi);
     }
-
+    public static MeiziFragment newInstance(Context context){
+        MeiziFragment meiziFragment=new MeiziFragment();
+        mContext=context;
+        return meiziFragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        meiziList = new ArrayList<>();
         super.onCreate(savedInstanceState);
-        meiziList=new ArrayList<>();
-    }
 
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v=inflater.inflate(R.layout.fragment_meizi,container,false);
-        myRecyclerView= (RecyclerView) v.findViewById(R.id.meizi_fragment);
-        return  v;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
 
+    }
+    @Override
+    public void getData(final int page) {
+        setSubscriber(page);
+    }
+    public void setSubscriber(final int page){
+        RequestData.getInstance(mContext).requestMeiziData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchMeiziData(page),
+                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchRestVideoData(page),getMyRecyclerView(),page,meiziList,isFirst(),false);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        s();
-    }
-
-    public void s(){
-        Subscriber<MeiziData> meiziDataSubscriber=new Subscriber<MeiziData>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(MeiziData meiziData) {
-                meiziList=meiziData.results;
-                Log.i("Logcat","meiziList"+meiziList);
-                adapterRecyclerViewMeizi=new AdapterRecyclerViewMeizi(mContext, meiziList);
-                myRecyclerView.setAdapter(adapterRecyclerViewMeizi);
-               adapterRecyclerViewMeizi.notifyDataSetChanged();
-            }
-        };
-        MyObserverOn(meiziDataSubscriber);
+        StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
+        getMyRecyclerView().setLayoutManager(new LinearLayoutManager(getActivity()));
+        getData(1);
+        InitListener();
     }
 }
