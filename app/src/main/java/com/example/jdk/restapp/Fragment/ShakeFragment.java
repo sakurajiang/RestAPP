@@ -33,7 +33,11 @@ public class ShakeFragment extends Fragment implements ShakeUtils.onMySensorChan
     Fragment shakeFrontFragment;
     List<Fragment> fragmentList=new ArrayList<Fragment>(3);;
     private List<String> mTitleList = new ArrayList<>(3);
+<<<<<<< HEAD
     private final int page=0;
+=======
+    private int page;
+>>>>>>> origin/master
     private static Context mContext;
     private ShakeUtils shakeUtils;
     private boolean isCreateView;
@@ -106,6 +110,7 @@ public class ShakeFragment extends Fragment implements ShakeUtils.onMySensorChan
     public void onMySensorChanged() {
         Toast.makeText(mContext,getString(R.string.shake_and_shake),Toast.LENGTH_SHORT).show();
         if(shakeMeiziFragment.getUserVisibleHint()){
+<<<<<<< HEAD
             ((ShakeMeiziFragment) shakeMeiziFragment).setSubscriber(page);
         }
         if(shakeAndroidFragment.getUserVisibleHint()){
@@ -113,6 +118,15 @@ public class ShakeFragment extends Fragment implements ShakeUtils.onMySensorChan
         }
         if(shakeFrontFragment.getUserVisibleHint()){
             ((ShakeFrontFragment)shakeFrontFragment).setSubscriber(page);
+=======
+            ((ShakeMeiziFragment) shakeMeiziFragment).setProgressSubscriber(page);
+        }
+        if(shakeAndroidFragment.getUserVisibleHint()){
+            ((ShakeAndroidFragment)shakeAndroidFragment).setProgressSubscribler(page);
+        }
+        if(shakeFrontFragment.getUserVisibleHint()){
+            ((ShakeFrontFragment)shakeFrontFragment).setProgressSubscribler(page);
+>>>>>>> origin/master
         }
     }
 

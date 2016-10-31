@@ -138,6 +138,10 @@ public class WatchAndShakeFragment extends Fragment implements View.OnClickListe
         shake_tv.setOnClickListener(this);
         shake_tv.setTypeface(typeface);
         search_tv.setTypeface(typeface);
+<<<<<<< HEAD
+=======
+//        jjSearchView.setController(new JJCircleToSimpleLineController());
+>>>>>>> origin/master
         search_layout.setOnClickListener(this);
         //初始化显示位置
         watch_tv.setSelected(true);
@@ -163,6 +167,22 @@ public class WatchAndShakeFragment extends Fragment implements View.OnClickListe
     @Override
     public void onResume() {
         super.onResume();
+<<<<<<< HEAD
+=======
+//        getView().setFocusableInTouchMode(true);
+//        getView().requestFocus();
+//        editText.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (keyCode == KeyEvent.KEYCODE_BACK) {
+////                    InputMethodManager inputMethodManager= (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+////                    inputMethodManager.hideSoftInputFromInputMethod(editText.getWindowToken(), 0);
+//                  getFocus();
+//                }
+//                return false;
+//            }
+//        });
+>>>>>>> origin/master
     }
     private void getFocus(){
         getView().setFocusableInTouchMode(true);

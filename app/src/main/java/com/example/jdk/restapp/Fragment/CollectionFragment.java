@@ -12,10 +12,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.jdk.restapp.Activity.ShowWebViewActivity;
+<<<<<<< HEAD
 import com.example.jdk.restapp.Adapter.RecyclerViewDataAdapter;
 
 import com.example.jdk.restapp.BR;
 import com.example.jdk.restapp.DataBase.MySQLiteWebViewTextBussiness;
+=======
+import com.example.jdk.restapp.Adapter.RecyclerViewDataBindingAdapter;
+import com.example.jdk.restapp.DataBase.MySQLiteWebViewTextBussiness;
+import com.example.jdk.restapp.ModelData.Constant;
+>>>>>>> origin/master
 import com.example.jdk.restapp.ModelData.entity.Base;
 import com.example.jdk.restapp.ModelData.entity.URLTableData;
 import com.example.jdk.restapp.R;
@@ -39,8 +45,12 @@ public class CollectionFragment extends BaseFragment implements View.OnClickList
     private List<Base> myList;
     private MySQLiteWebViewTextBussiness mySQLiteWebViewTextBussiness;
     private View v;
+<<<<<<< HEAD
     private RecyclerViewDataAdapter recyclerViewDataAdapter;
     private final int collectionLayoutIdArray[]={R.layout.collection_item};
+=======
+    private RecyclerViewDataBindingAdapter recyclerViewDataBindingAdapter;
+>>>>>>> origin/master
     public interface collectionDrawerIconListener{
         public void collectionDrawerIcon();
     }
@@ -85,6 +95,7 @@ public class CollectionFragment extends BaseFragment implements View.OnClickList
         List<URLTableData> urlTableDataList=mySQLiteWebViewTextBussiness.queryAllFromTable();
         myList=new ArrayList<>();
        for(int i=0;i<urlTableDataList.size();i++){
+<<<<<<< HEAD
            Date e=urlTableDataList.get(i).publishedAt;
            myList.add(urlTableDataList.get(i));
        }
@@ -98,6 +109,20 @@ public class CollectionFragment extends BaseFragment implements View.OnClickList
                 View v = getMyRecyclerView().getChildAt(position);
                 TextView textView = (TextView) v.findViewById(R.id.id_tv);
                 int _id = Integer.valueOf(textView.getText().toString());
+=======
+           myList.add(urlTableDataList.get(i));
+       }
+        recyclerViewDataBindingAdapter = new RecyclerViewDataBindingAdapter(mContext, myList, Constant.IsCollection);
+        getMyRecyclerView().setAdapter(recyclerViewDataBindingAdapter);
+        recyclerViewDataBindingAdapter.setRecyclerViewItemOnClickListener(new RecyclerViewDataBindingAdapter.recyclerViewDataBindingItemOnClickListener() {
+            @Override
+            public void recyclerViewDataBindingItemOnClick(String url, String desc, String who, Date CreateAt,String type,int position) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, ShowWebViewActivity.class);
+                View v=getMyRecyclerView().getChildAt(position);
+                TextView textView= (TextView) v.findViewById(R.id.id_tv);
+                int _id=Integer.valueOf(textView.getText().toString());
+>>>>>>> origin/master
                 URLTableData urlTableData = new URLTableData(url, who, desc, CreateAt);
                 urlTableData.setType(type);
                 urlTableData.set_id(_id);
@@ -108,7 +133,11 @@ public class CollectionFragment extends BaseFragment implements View.OnClickList
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
         recyclerViewDataAdapter.notifyDataSetChanged();
+=======
+        recyclerViewDataBindingAdapter.notifyDataSetChanged();
+>>>>>>> origin/master
     }
 
     @Override

@@ -39,7 +39,11 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="10sp"
+<<<<<<< HEAD
             android:hint="@{urlTableData.publishedAt}"
+=======
+            android:hint="@{urlTableData.createdAt==null?urlTableData.createdAt:ChangeTimeFormat.changeToYearMonthDay(urlTableData.createdAt)}"
+>>>>>>> origin/master
             android:layout_below="@id/collection_item_id_desc_tv"
             android:layout_toRightOf="@id/collection_item_id_who_tv"/>
 

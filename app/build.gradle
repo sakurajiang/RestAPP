@@ -25,9 +25,12 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
+<<<<<<< HEAD
     compile ('com.android.support:support-v4:23.3.0'){
         force = true;
     }
+=======
+>>>>>>> origin/master
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
@@ -43,5 +46,8 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.github.ikidou:FragmentBackHandler:2.1'
+<<<<<<< HEAD
     compile 'com.github.chrisbanes:PhotoView:1.3.0'
+=======
+>>>>>>> origin/master
 }

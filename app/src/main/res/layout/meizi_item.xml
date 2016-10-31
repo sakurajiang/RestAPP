@@ -3,7 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <import type="com.example.jdk.restapp.Utils.ChangeTimeFormat"/>
+<<<<<<< HEAD
         <import type="com.example.jdk.restapp.Utils.SplitUtils"/>
+=======
+>>>>>>> origin/master
         <variable
             name="meizi"
             type="com.example.jdk.restapp.ModelData.entity.Meizi"/>
@@ -18,7 +21,10 @@
         android:orientation="vertical"
         app:cardCornerRadius="5dp">
     <LinearLayout
+<<<<<<< HEAD
         android:id="@+id/meizi_item_ll"
+=======
+>>>>>>> origin/master
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
@@ -27,8 +33,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+<<<<<<< HEAD
             android:transitionName="@string/jump_meizi"
             app:imageURL="@{SplitUtils.splitWithComma(video.url)[1]}"
+=======
+            app:imageURL="@{meizi.url}"
+>>>>>>> origin/master
             />
         <RelativeLayout
             android:id="@+id/video_item_id_rl"
@@ -41,7 +51,11 @@
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:maxLines="3"
+<<<<<<< HEAD
                 android:text="@{SplitUtils.splitWithComma(video.desc)[0]}"
+=======
+                android:text="@{video.desc}"
+>>>>>>> origin/master
                 android:ellipsize="end"
                 />
             <TextView
@@ -56,7 +70,11 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
+<<<<<<< HEAD
                 android:text="@{video.publishedAt}"
+=======
+                android:text="@{ChangeTimeFormat.changeToYearMonthDay(video.createdAt)}"
+>>>>>>> origin/master
                 android:layout_below="@id/video_item_id_desc_tv"
                 android:layout_toRightOf="@id/video_item_id_who_tv"/>
         </RelativeLayout>

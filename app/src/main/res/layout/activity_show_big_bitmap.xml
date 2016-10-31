@@ -2,9 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:id="@+id/activity_showbigbitmap"
     android:fitsSystemWindows="true"
     android:background="@color/colorPrimary"
+=======
+     android:background="@color/colorPrimary"
+    android:id="@+id/activity_showbigbitmap"
+>>>>>>> origin/master
     >
     <include layout="@layout/show_webview_title"
         android:layout_height="?attr/actionBarSize"
@@ -13,6 +18,10 @@
         android:id="@+id/big_Image"
         android:background="@color/md_brown_300"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent"
         android:transitionName="@string/jump_meizi"/>
+=======
+        android:layout_height="match_parent" />
+>>>>>>> origin/master
 </LinearLayout>

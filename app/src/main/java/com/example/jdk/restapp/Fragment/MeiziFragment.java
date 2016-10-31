@@ -1,6 +1,7 @@
 package com.example.jdk.restapp.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,21 +10,49 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< HEAD
 import com.example.jdk.restapp.HttpUtils.RequestData;
 import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
 import com.example.jdk.restapp.ModelData.entity.Base;
+=======
+import com.example.jdk.restapp.Activity.ShowBigBitmapActivity;
+import com.example.jdk.restapp.Activity.ShowWebViewActivity;
+import com.example.jdk.restapp.Adapter.RecyclerViewDataBindingAdapter;
+import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
+import com.example.jdk.restapp.ModelData.Constant;
+import com.example.jdk.restapp.ModelData.MeiziData;
+import com.example.jdk.restapp.ModelData.RestVideoData;
+import com.example.jdk.restapp.ModelData.entity.Base;
+import com.example.jdk.restapp.ModelData.entity.URLTableData;
+import com.example.jdk.restapp.CustomizedWidget.ProgressSubscriber;
+>>>>>>> origin/master
 import com.example.jdk.restapp.R;
+import com.example.jdk.restapp.Utils.SnackBarUtils;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+>>>>>>> origin/master
 /**
  * Created by JDK on 2016/8/4.
  */
 public class MeiziFragment extends BaseFragment {
     private static Context mContext;
     private List<Base> meiziList;
+<<<<<<< HEAD
+=======
+    private List<Base> videoList;
+    private RecyclerViewDataBindingAdapter recyclerViewDataBindingAdapter;
+    Subscriber<MeiziData> meiziDataSubscriber;
+>>>>>>> origin/master
     public MeiziFragment() {
         super(R.layout.fragment_watch_meizi);
     }
@@ -35,6 +64,10 @@ public class MeiziFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         meiziList = new ArrayList<>();
+<<<<<<< HEAD
+=======
+        videoList=new ArrayList<>();
+>>>>>>> origin/master
         super.onCreate(savedInstanceState);
 
     }
@@ -48,6 +81,7 @@ public class MeiziFragment extends BaseFragment {
         super.onDestroyView();
 
     }
+<<<<<<< HEAD
     @Override
     public void getData(final int page) {
         setSubscriber(page);
@@ -61,6 +95,170 @@ public class MeiziFragment extends BaseFragment {
         super.setUserVisibleHint(isVisibleToUser);
     }
     @Override
+=======
+    @Override
+    public void getData(final int page) {
+        setProgressSubscriber(page);
+    }
+    public void setSubscriber(final int page){
+        meiziDataSubscriber = new Subscriber<MeiziData>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.network_error)).danger();
+            }
+
+            @Override
+            public void onNext(MeiziData meiziData) {
+                for (int i = 0; i < meiziData.results.size(); i++) {
+                    meiziList.add(meiziData.results.get(i));
+
+                }
+                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchRestVideoData(page)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<RestVideoData>() {
+                            @Override
+                            public void onCompleted() {
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onNext(RestVideoData restVideoData) {
+                                //这样设置是为了后面能够更新数据
+                                for (int i = 0; i < restVideoData.results.size(); i++) {
+                                    videoList.add(restVideoData.results.get(i));
+                                }
+                                //为什么在AndroidFragment或者FrontFragment这两个中不设置isFirst，加载依然可以，只是每次都需要从头再往下翻
+                                //但是在MeiziFragment中不设置isFirst，如果加载的话就会变成白屏，难道是因为前两个用的是mvvm方式，而MeiziFragment
+                                //没有用mvvm绑定数据的方式？
+                                if (isFirst()) {
+                                    recyclerViewDataBindingAdapter = new RecyclerViewDataBindingAdapter(mContext,videoList, Constant.IsMeizi);
+                                    recyclerViewDataBindingAdapter.addList(meiziList);
+                                    getMyRecyclerView().setAdapter(recyclerViewDataBindingAdapter);
+                                }
+                                recyclerViewDataBindingAdapter.setRecyclerViewItemOnClickListener(new RecyclerViewDataBindingAdapter.recyclerViewDataBindingItemOnClickListener() {
+                                    @Override
+                                    public void recyclerViewDataBindingItemOnClick(String url, String desc, String who, Date CreateAt, String type, int position) {
+                                        Intent intent = new Intent();
+                                        intent.setClass(mContext, ShowWebViewActivity.class);
+                                        URLTableData urlTableData = new URLTableData(url, who, desc, CreateAt);
+                                        urlTableData.setType(type);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putSerializable("urlTableData", urlTableData);
+                                        intent.putExtras(bundle);
+                                        startActivity(intent);
+                                    }
+                                });
+                                recyclerViewDataBindingAdapter.setRecyclerViewDoubleDataBindingItemOnClickListener(new RecyclerViewDataBindingAdapter.recyclerViewDoubleDataBindingItemOnClickListener() {
+                                    @Override
+                                    public void recyclerViewDoubleDataBindingItemOnClick(String url, String desc) {
+                                        Intent intent = new Intent();
+                                        intent.setClass(mContext, ShowBigBitmapActivity.class);
+                                        intent.putExtra("URL", url);
+                                        intent.putExtra("DESC", desc);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                recyclerViewDataBindingAdapter.notifyDataSetChanged();
+                            }
+                        });
+
+
+            }
+        };
+        ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchMeiziData(page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(meiziDataSubscriber);
+    }
+    public void setProgressSubscriber(final int page){
+        meiziDataSubscriber = new Subscriber<MeiziData>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(MeiziData meiziData) {
+                for (int i = 0; i < meiziData.results.size(); i++) {
+                    meiziList.add(meiziData.results.get(i));
+
+                }
+                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchRestVideoData(page)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new ProgressSubscriber<RestVideoData>(mContext) {
+                            @Override
+                            public void onNext(RestVideoData restVideoData) {
+                                //这样设置是为了后面能够更新数据
+                                for (int i = 0; i < restVideoData.results.size(); i++) {
+                                    videoList.add(restVideoData.results.get(i));
+                                }
+                                //为什么在AndroidFragment或者FrontFragment这两个中不设置isFirst，加载依然可以，只是每次都需要从头再往下翻
+                                //但是在MeiziFragment中不设置isFirst，如果加载的话就会变成白屏，难道是因为前两个用的是mvvm方式，而MeiziFragment
+                                //没有用mvvm绑定数据的方式？
+                                if (isFirst()) {
+                                    recyclerViewDataBindingAdapter = new RecyclerViewDataBindingAdapter(mContext,videoList, Constant.IsMeizi);
+                                    recyclerViewDataBindingAdapter.addList(meiziList);
+                                    getMyRecyclerView().setAdapter(recyclerViewDataBindingAdapter);
+                                }
+                                recyclerViewDataBindingAdapter.setRecyclerViewItemOnClickListener(new RecyclerViewDataBindingAdapter.recyclerViewDataBindingItemOnClickListener() {
+                                    @Override
+                                    public void recyclerViewDataBindingItemOnClick(String url, String desc, String who, Date CreateAt, String type, int position) {
+                                        Intent intent = new Intent();
+                                        intent.setClass(mContext, ShowWebViewActivity.class);
+                                        URLTableData urlTableData = new URLTableData(url, who, desc, CreateAt);
+                                        urlTableData.setType(type);
+                                        urlTableData.setIsCollected(false);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putSerializable("urlTableData", urlTableData);
+                                        intent.putExtras(bundle);
+                                        startActivity(intent);
+                                    }
+                                });
+                                recyclerViewDataBindingAdapter.setRecyclerViewDoubleDataBindingItemOnClickListener(new RecyclerViewDataBindingAdapter.recyclerViewDoubleDataBindingItemOnClickListener() {
+                                    @Override
+                                    public void recyclerViewDoubleDataBindingItemOnClick(String url, String desc) {
+                                        Intent intent = new Intent();
+                                        intent.setClass(mContext, ShowBigBitmapActivity.class);
+                                        intent.putExtra("URL", url);
+                                        intent.putExtra("DESC", desc);
+                                        startActivity(intent);
+                                    }
+                                });
+
+                                recyclerViewDataBindingAdapter.notifyDataSetChanged();
+                            }
+                        });
+            }
+        };
+        ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchMeiziData(page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(meiziDataSubscriber);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+    @Override
+>>>>>>> origin/master
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);

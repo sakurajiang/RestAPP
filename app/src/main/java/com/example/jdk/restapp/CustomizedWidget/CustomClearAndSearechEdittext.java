@@ -6,7 +6,10 @@ import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+>>>>>>> origin/master
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -78,6 +81,7 @@ public class CustomClearAndSearechEdittext extends EditText implements View.OnFo
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+<<<<<<< HEAD
         Log.e("log", "" + super.onTouchEvent(event));
         if(event.getAction()==MotionEvent.ACTION_DOWN) {
             Log.e("log",""+MotionEvent.ACTION_DOWN);
@@ -89,6 +93,9 @@ public class CustomClearAndSearechEdittext extends EditText implements View.OnFo
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
             Log.e("log", "onTouchEvent: ");
+=======
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+>>>>>>> origin/master
             if (getCompoundDrawables()[2] != null) {
                 boolean searchable=event.getX()>((getWidth()-getPaddingRight()+80));
                 boolean touchable = event.getX() > (getWidth() - getTotalPaddingRight())
@@ -100,9 +107,15 @@ public class CustomClearAndSearechEdittext extends EditText implements View.OnFo
                     mOnClickSearchListener.onClickSearch();
                 }
             }
+<<<<<<< HEAD
             return true;
         }
         return true;
+=======
+        }
+
+        return super.onTouchEvent(event);
+>>>>>>> origin/master
     }
 
     /**
