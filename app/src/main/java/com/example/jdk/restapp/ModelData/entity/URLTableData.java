@@ -8,19 +8,11 @@ import java.util.Date;
  */
 public class URLTableData extends Base implements Serializable {
     public int id;
-<<<<<<< HEAD
     public String url;//链接地址
     public String who;//作者
     public String desc;//干货内容的描述
     public Date publishedAt;
     public String type;
-=======
-    private String url;//链接地址
-    private String who;//作者
-    private String desc;//干货内容的描述
-    private Date createdAt;
-    private String type;
->>>>>>> origin/master
     public boolean isCollected;
     public URLTableData(){
 
@@ -29,11 +21,7 @@ public class URLTableData extends Base implements Serializable {
         this.url=url;
         this.who=who;
         this.desc=desc;
-<<<<<<< HEAD
         this.publishedAt=createdAt;
-=======
-        this.createdAt=createdAt;
->>>>>>> origin/master
     }
     public String getType() {
         return type;
@@ -43,17 +31,6 @@ public class URLTableData extends Base implements Serializable {
         this.type = type;
     }
 
-<<<<<<< HEAD
-=======
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
->>>>>>> origin/master
     public String getDesc() {
         return desc;
     }

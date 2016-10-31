@@ -22,17 +22,10 @@
             android:theme="@style/ImageTranslucentTheme"
             />
         <activity android:name="com.example.jdk.restapp.Activity.ShowBigBitmapActivity"
-<<<<<<< HEAD
             android:theme="@style/ImageTranslucentTheme"
             />
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-=======
-            android:theme="@style/ImageTranslucentTheme"/>
-    </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.VIBRATE" />
->>>>>>> origin/master
 </manifest>

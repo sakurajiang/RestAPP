@@ -15,7 +15,6 @@ import com.aspsine.swipetoloadlayout.OnLoadMoreListener;
 import com.aspsine.swipetoloadlayout.OnRefreshListener;
 import com.aspsine.swipetoloadlayout.SwipeToLoadLayout;
 import com.example.jdk.restapp.R;
-<<<<<<< HEAD
 
 import java.util.List;
 
@@ -26,14 +25,6 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-=======
-
-import java.util.List;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
->>>>>>> origin/master
 
 
 /**
@@ -101,7 +92,6 @@ public abstract  class BaseFragment extends Fragment {
             public void onLoadMore() {
                 setIsFirst(false);
                 t++;
-<<<<<<< HEAD
                 Observable.create(new Observable.OnSubscribe<Integer>() {
                     @Override
                     public void call(Subscriber<? super Integer> subscriber) {
@@ -116,24 +106,10 @@ public abstract  class BaseFragment extends Fragment {
                             }
                         });
 //                setSubscriber(t);
-=======
-                setSubscriber(t);
->>>>>>> origin/master
                 swipeToLoadLayout.setLoadingMore(false);
             }
         });
     }
-<<<<<<< HEAD
 
-=======
-    //设置list的规格,若有超出，则从头开始抹去，直到满足条件的size
-    public void setListWise(List listWise,int size){
-       if(listWise.size()>size){
-           for(int i=0;i<listWise.size()-size;i++){
-               listWise.remove(i);
-           }
-       }
-    }
->>>>>>> origin/master
 
 }

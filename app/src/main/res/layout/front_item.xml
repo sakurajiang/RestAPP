@@ -32,11 +32,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textSize="10sp"
-<<<<<<< HEAD
             android:hint="@{front.publishedAt}"
-=======
-            android:hint="@{ChangeTimeFormat.changeToYearMonthDay(front.createdAt)}"
->>>>>>> origin/master
             android:layout_below="@id/android_item_id_desc_tv"
             android:layout_toRightOf="@id/android_item_id_who_tv"/>
 

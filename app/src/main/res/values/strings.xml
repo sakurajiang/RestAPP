@@ -13,32 +13,21 @@
     <string name="navigation_menu_collection">我的收藏</string>
     <string name="navigation_menu_about_project">关于项目</string>
     <string name="navigation_menu_about_author">关于作者</string>
-<<<<<<< HEAD
     <string name="jump_meizi">妹子跳转</string>
-=======
->>>>>>> origin/master
     <string name="plus_a_litter">再加一点</string>
     <string name="shake_and_shake">摇一摇</string>
     <string name="navigation_menu_share">分享</string>
     <string name="network_error">网络连接错误，请检查网络</string>
-<<<<<<< HEAD
-=======
-    <string name="onClick_share">人家(分享)还没准备好</string>
-    <string name="onClick_save">人家(保存)还没准备好</string>
->>>>>>> origin/master
     <string name="onClick_setting">人家(设置)还没准备好</string>
     <string name="shake_refresh_header">骚年，此路是我开，不让刷新,摇摇更健康</string>
     <string name="shake_loadmore_footer">骚年，此路还是我开，不让加载，摇摇更健康</string>
     <string name="collection_refresh_header">假装可以刷新</string>
     <string name="collection_loadmore_footer">假装可以加载</string>
     <string name="shake_too_fast">年轻人，间隔太短，过一会再摇</string>
-<<<<<<< HEAD
     <string name="save_meizi_successful">妹子接受了你的请求</string>
     <string name="save_meizi_failed">妹子拒绝了你的请求</string>
     <string name="share_successful">分享成功</string>
     <string name="share_failed">分享失败，请重试</string>
-=======
->>>>>>> origin/master
     <string name="app_version">Version </string>
     <string name="navigation_menu_about_project_content">
          RespAPP是干货集中营非官方客户端，每天精选妹纸图片，

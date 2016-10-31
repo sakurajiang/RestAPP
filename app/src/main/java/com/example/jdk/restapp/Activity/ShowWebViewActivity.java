@@ -19,15 +19,10 @@ import android.widget.TextView;
 import com.example.jdk.restapp.DataBase.MySQLiteWebViewTextBussiness;
 import com.example.jdk.restapp.ModelData.entity.URLTableData;
 import com.example.jdk.restapp.R;
-<<<<<<< HEAD
 import com.example.jdk.restapp.Utils.ShareUtils;
 import com.example.jdk.restapp.Utils.SnackBarUtils;
 
 import java.util.Date;
-=======
-import com.example.jdk.restapp.Utils.SnackBarUtils;
-
->>>>>>> origin/master
 import java.util.List;
 
 import butterknife.Bind;
@@ -178,10 +173,6 @@ public class ShowWebViewActivity extends BaseActivity {
         });
     }
     public void judgeURLTableData(URLTableData urlTableData) {
-<<<<<<< HEAD
-=======
-        int id;
->>>>>>> origin/master
         //查询收藏的urlTableData
         List<URLTableData> urlTableDataList = mySQLiteWebViewTextBussiness.queryAllFromTable();
         //若收藏了东西，就跟目前选中的urlTableData作比较，相同则将IsCollected变为true
@@ -215,12 +206,8 @@ public class ShowWebViewActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         final int id = item.getItemId();
          if (id == R.id.action_share) {
-<<<<<<< HEAD
              ShareUtils.getInstance(this).shareUrl(urlTableData.getUrl());
              SnackBarUtils.makeShort(getWindow().getDecorView(),getResources().getString(R.string.share_successful)).danger();
-=======
-             SnackBarUtils.makeShort(getWindow().getDecorView(),getResources().getString(R.string.onClick_share)).danger();
->>>>>>> origin/master
         }
         return super.onOptionsItemSelected(item);
     }

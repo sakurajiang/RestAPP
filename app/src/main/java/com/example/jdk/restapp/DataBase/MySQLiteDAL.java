@@ -4,10 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-<<<<<<< HEAD
 import android.util.Log;
-=======
->>>>>>> origin/master
 
 import com.example.jdk.restapp.ModelData.entity.URLTableData;
 import com.example.jdk.restapp.Utils.ChangeTimeFormat;
@@ -31,13 +28,8 @@ public class MySQLiteDAL extends MySQLiteBase{
         urlTableData.setDesc(cursor.getString(cursor.getColumnIndex("URLDesc")));
         urlTableData.setUrl(cursor.getString(cursor.getColumnIndex("URLValue")));
         urlTableData.setWho(cursor.getString(cursor.getColumnIndex("URLWho")));
-<<<<<<< HEAD
         Date Createdate= ChangeTimeFormat.changeStringToDate(cursor.getString(cursor.getColumnIndex("URLPublishedAt")));
         urlTableData.publishedAt=Createdate;
-=======
-        Date Createdate= ChangeTimeFormat.changeStringToDate(cursor.getString(cursor.getColumnIndex("URLCreateAt")));
-        urlTableData.setCreatedAt(Createdate);
->>>>>>> origin/master
         return  urlTableData;
     }
 
@@ -49,16 +41,9 @@ public class MySQLiteDAL extends MySQLiteBase{
         stringBuilder.append(",[URLValue] varchar(20) NOT NULL UNIQUE");
         stringBuilder.append(",[URLDesc] varchar(20) NOT NULL");
         stringBuilder.append(",[URLWho] varchar(20) ");
-<<<<<<< HEAD
         stringBuilder.append(",[URLPublishedAt] datetime NOT NULL");
         stringBuilder.append(")");
         sqLiteDatabase.execSQL(stringBuilder.toString());
-=======
-        stringBuilder.append(",[URLCreateAt] datetime NOT NULL");
-        stringBuilder.append(")");
-        sqLiteDatabase.execSQL(stringBuilder.toString());
-//        sqLiteDatabase.execSQL("CREATE UNIQUE INDEX unique_index_url ON WebViewTextURL(URLValue)");
->>>>>>> origin/master
     }
     public String getTable(){
         return getTables().get(0);
@@ -96,13 +81,8 @@ public class MySQLiteDAL extends MySQLiteBase{
         if(urlTableData.getDesc()==null){
             urlTableData.setDesc("不存在");
         }
-<<<<<<< HEAD
         if(urlTableData.publishedAt==null){
             urlTableData.publishedAt=new Date();
-=======
-        if(urlTableData.getCreatedAt()==null){
-            urlTableData.setCreatedAt(new Date());
->>>>>>> origin/master
         }
         return urlTableData;
     }
@@ -110,12 +90,8 @@ public class MySQLiteDAL extends MySQLiteBase{
        setUrlTableData(urlTableData);
         ContentValues _ContentValues = new ContentValues();
         _ContentValues.put("URLValue",urlTableData.getUrl());
-<<<<<<< HEAD
         Log.e("log",""+urlTableData.publishedAt);
         _ContentValues.put("URLPublishedAt",ChangeTimeFormat.changeToYearMonthDay(urlTableData.publishedAt));
-=======
-        _ContentValues.put("URLCreateAt",ChangeTimeFormat.changeToYearMonthDay(urlTableData.getCreatedAt()));
->>>>>>> origin/master
         _ContentValues.put("URLWho",urlTableData.getWho());
         _ContentValues.put("URLDesc",urlTableData.getDesc());
         return _ContentValues;

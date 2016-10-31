@@ -10,17 +10,10 @@
         android:layout_height="match_parent"
         app:refresh_enabled="true"
         >
-<<<<<<< HEAD
         <com.example.jdk.restapp.CustomizedWidget.header
             android:id="@id/swipe_refresh_header"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-=======
-        <com.example.jdk.restapp.CustomizedWidget.WatchRefreshHeaderView
-            android:id="@id/swipe_refresh_header"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
->>>>>>> origin/master
             android:gravity="center" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/swipe_target"
@@ -30,11 +23,7 @@
         <com.example.jdk.restapp.CustomizedWidget.WatchLoadMoreFooterView
             android:id="@id/swipe_load_more_footer"
             android:layout_width="match_parent"
-<<<<<<< HEAD
             android:layout_height="20dp"
-=======
-            android:layout_height="50dp"
->>>>>>> origin/master
             android:gravity="center" />
     </com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
 </LinearLayout>
