@@ -5,16 +5,27 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:supportsRtl="true"
+        android:hardwareAccelerated="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name="com.example.jdk.restapp.Activity.MainActivity"
+            android:theme="@style/ImageTranslucentTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.example.jdk.restapp.Activity.ShowWebViewActivity"
+            android:theme="@style/ImageTranslucentTheme"
+            />
+        <activity android:name="com.example.jdk.restapp.Activity.ShowBigBitmapActivity"
+            android:theme="@style/ImageTranslucentTheme"
+            />
     </application>
-<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>

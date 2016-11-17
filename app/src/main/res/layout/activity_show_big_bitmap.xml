@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_showbigbitmap"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
+    >
+    <include layout="@layout/show_webview_title"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="match_parent"/>
+    <ImageView
+        android:id="@+id/big_Image"
+        android:background="@color/md_brown_300"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transitionName="@string/jump_meizi"/>
+</LinearLayout>
