@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/themeColor"
+            app:contentInsetStart="0.0dp"
+            app:layout_scrollFlags="enterAlways|scroll"
+            app:theme="@style/ToolbarStyle">
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               >
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    app:layout_widthPercent="50%"
+                    android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/drawerIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/icon_drawer"
+                    android:textSize="30dp"
+                    android:textColor="@color/white"
+                    />
+                <TextView
+                    android:id="@+id/watch_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/icon_watch"
+                    android:textSize="25dp"
+                    android:layout_marginEnd="18dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@drawable/selector_tabtext_first"
+                    android:clickable="true" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    app:layout_widthPercent="50%"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/shake_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="18dp"
+                        android:text="@string/icon_shake"
+                        android:textSize="25dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@drawable/selector_tabtext_first"
+                        android:clickable="true" />
+                <LinearLayout
+                    android:id="@+id/search_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+                    <!--<com.cjj.sva.JJSearchView-->
+                        <!--android:id="@+id/jjsv"-->
+                        <!--android:background="@color/colorPrimary"-->
+                        <!--android:layout_width="100dp"-->
+                        <!--android:layout_height="wrap_content"/>-->
+
+                    <TextView
+                        android:id="@+id/search_tv"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:text="@string/icon_search"
+                        android:textColor="@color/white"
+                        android:gravity="center_vertical"
+                        android:textSize="25dp"/>
+                </LinearLayout>
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/search_til"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="match_parent" >
+                        <com.example.jdk.restapp.CustomizedWidget.CustomClearAndSearechEdittext
+                            android:id="@+id/search_et"
+                            android:hint="输入搜索内容"
+                            android:inputType="text"
+                            android:singleLine="true"
+                            android:imeOptions="actionSearch"
+                            android:paddingRight="70dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+            </android.support.percent.PercentRelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff" />
+    </LinearLayout>
+
+</LinearLayout>
