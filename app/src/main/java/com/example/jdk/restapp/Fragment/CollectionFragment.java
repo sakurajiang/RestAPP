@@ -85,12 +85,18 @@ public class CollectionFragment extends BaseFragment implements View.OnClickList
         List<URLTableData> urlTableDataList=mySQLiteWebViewTextBussiness.queryAllFromTable();
         myList=new ArrayList<>();
        for(int i=0;i<urlTableDataList.size();i++){
+<<<<<<< HEAD
            myList.add(urlTableDataList.get(i));
        }
         if(myList.size()==0){
             URLTableData urlTableData=new URLTableData(null,null,null,new Date());
             myList.add(urlTableData);
         }
+=======
+           Date e=urlTableDataList.get(i).publishedAt;
+           myList.add(urlTableDataList.get(i));
+       }
+>>>>>>> origin/master
         recyclerViewDataAdapter=new RecyclerViewDataAdapter(mContext,myList,collectionLayoutIdArray, BR.urlTableData);
         getMyRecyclerView().setAdapter(recyclerViewDataAdapter);
         recyclerViewDataAdapter.setRecyclerViewItemOnClickListener(new RecyclerViewDataAdapter.recyclerViewDataBindingItemOnClickListener() {
@@ -108,23 +114,34 @@ public class CollectionFragment extends BaseFragment implements View.OnClickList
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("urlTableData", urlTableData);
                 intent.putExtras(bundle);
+<<<<<<< HEAD
                 if(url==null){
                     SnackBarUtils.makeShort(getActivity().getWindow().getDecorView(), getResources().getString(R.string.collection_no_item)).danger();
                 }else {
                     startActivity(intent);
                 }
+=======
+                startActivity(intent);
+>>>>>>> origin/master
             }
         });
         recyclerViewDataAdapter.notifyDataSetChanged();
     }
 
     @Override
+<<<<<<< HEAD
     public void setSubscriber(int page,boolean isRefresh) {
+=======
+    public void setSubscriber(int page) {
+>>>>>>> origin/master
         if(page>1) {
             SnackBarUtils.makeShort(getActivity().getWindow().getDecorView(), getResources().getString(R.string.collection_loadmore_footer)).danger();
         }else{
             SnackBarUtils.makeShort(getActivity().getWindow().getDecorView(), getResources().getString(R.string.collection_refresh_header)).danger();
+<<<<<<< HEAD
             swipeRefreshLayout.setRefreshing(false);
+=======
+>>>>>>> origin/master
         }
     }
 

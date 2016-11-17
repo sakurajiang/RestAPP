@@ -25,7 +25,10 @@ import java.util.List;
 public class MeiziFragment extends BaseFragment {
     private static Context mContext;
     private List<Base> meiziList;
+<<<<<<< HEAD
     private boolean isCache=false;
+=======
+>>>>>>> origin/master
     public MeiziFragment() {
         super(R.layout.fragment_watch_meizi);
     }
@@ -33,36 +36,62 @@ public class MeiziFragment extends BaseFragment {
         MeiziFragment meiziFragment=new MeiziFragment();
         mContext=context;
         return meiziFragment;
+<<<<<<< HEAD
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+=======
+>>>>>>> origin/master
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        meiziList = new ArrayList<>();
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD
         meiziList=SPDataUtil.getFirstPageGirls(getString(R.string.sharedPreferences_picture),mContext);
         if(meiziList!=null&&meiziList.size()!=0) {
            isCache=true;
         }else{
             meiziList = new ArrayList<>();
         }
+=======
+>>>>>>> origin/master
 
     }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
+<<<<<<< HEAD
     }
        @Override
     public void onDestroyView() {
         super.onDestroyView();
 
+=======
+>>>>>>> origin/master
     }
-
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+    }
+    @Override
+    public void getData(final int page) {
+        setSubscriber(page);
+    }
+    public void setSubscriber(final int page){
+        RequestData.getInstance(mContext).requestMeiziData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchMeiziData(page),
+                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchRestVideoData(page),getMyRecyclerView(),page,meiziList,isFirst(),false);
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+    @Override
+<<<<<<< HEAD
     public void onDetach() {
         super.onDetach();
     }
@@ -114,11 +143,14 @@ public class MeiziFragment extends BaseFragment {
 
     }
     @Override
+=======
+>>>>>>> origin/master
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         getMyRecyclerView().setLayoutManager(new LinearLayoutManager(getActivity()));
+<<<<<<< HEAD
         InitListener();
         swipeRefreshLayout.post(new Runnable() {
             @Override
@@ -127,5 +159,9 @@ public class MeiziFragment extends BaseFragment {
                 setSubscriber(1, false);
             }
         });
+=======
+        getData(1);
+        InitListener();
+>>>>>>> origin/master
     }
 }

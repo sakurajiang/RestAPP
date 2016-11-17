@@ -42,6 +42,7 @@ public class ShakeAndroidFragment extends BaseFragment{
 
     @Override
     public void getData(int page) {
+<<<<<<< HEAD
        setSubscriber(page,false);
     }
     public void setSubscriber(int page,boolean isRefresh){
@@ -56,6 +57,17 @@ public class ShakeAndroidFragment extends BaseFragment{
         }
         RequestData.getInstance(mContext).requestAndroidData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeAndroidData(), getMyRecyclerView(), page, null, isFirst(), true,false);
 
+=======
+       setSubscriber(page);
+    }
+    public void setSubscriber(int page){
+        RequestData.getInstance(mContext).requestAndroidData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeAndroidData(), getMyRecyclerView(), page, null, isFirst(), true);
+        if(page>1) {
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_loadmore_footer)).danger();
+        }else if(page==1){
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_refresh_header)).danger();
+        }
+>>>>>>> origin/master
     }
 
     @Override

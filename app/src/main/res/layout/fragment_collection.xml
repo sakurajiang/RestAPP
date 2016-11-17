@@ -5,5 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+<<<<<<< HEAD
     <include layout="@layout/swiperefreshlayout_layout"/>
+=======
+    <include layout="@layout/swipetoloadlayout_watch_layout"/>
+>>>>>>> origin/master
 </LinearLayout>

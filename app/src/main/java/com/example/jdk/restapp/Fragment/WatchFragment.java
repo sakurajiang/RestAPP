@@ -6,14 +6,20 @@ import android.support.v4.app.Fragment;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+<<<<<<< HEAD
 import android.support.v4.app.FragmentStatePagerAdapter;
+=======
+>>>>>>> origin/master
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+<<<<<<< HEAD
 import com.example.jdk.restapp.HttpUtils.RequestData;
+=======
+>>>>>>> origin/master
 import com.example.jdk.restapp.R;
 
 import java.util.ArrayList;
@@ -48,9 +54,16 @@ public class WatchFragment extends Fragment{
             return v;
         }
         v=inflater.inflate(R.layout.paf_fragment_layout,container,false);
+<<<<<<< HEAD
         ButterKnife.bind(this, v);
         InitVariable();
         MyAdapter myAdapter = new MyAdapter(getChildFragmentManager());
+=======
+        ButterKnife.bind(this,v);
+        InitVariable();
+        MyAdapter myAdapter = new MyAdapter(getChildFragmentManager());
+        myAdapter.notifyDataSetChanged();
+>>>>>>> origin/master
         myViewPager.setAdapter(myAdapter);
         myViewPager.setOffscreenPageLimit(2);
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -74,7 +87,10 @@ public class WatchFragment extends Fragment{
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(FragmentManager fm) {

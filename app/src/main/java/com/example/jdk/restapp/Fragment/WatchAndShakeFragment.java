@@ -122,7 +122,15 @@ public class WatchAndShakeFragment extends Fragment implements View.OnClickListe
         return v;
     }
     private void initWidgets() {
+<<<<<<< HEAD
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
+=======
+
+        //去除状态栏文字
+//        mNavigationView.setItemIconTintList(null);
+        adapter = new MyFragmentPagerAdapter(getFragmentManager());
+//        shakeUtils=new ShakeUtils(getActivity());
+>>>>>>> origin/master
         getFragmentManager();
         view_pager.setAdapter(adapter);
         view_pager.addOnPageChangeListener(this);

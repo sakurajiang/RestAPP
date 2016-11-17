@@ -47,6 +47,7 @@ public class ShakeFrontFragment extends BaseFragment {
 
     @Override
     public void getData(int page) {
+<<<<<<< HEAD
         setSubscriber(page,false);
     }
     public void setSubscriber(int page,boolean isRefresh){
@@ -60,6 +61,17 @@ public class ShakeFrontFragment extends BaseFragment {
             return;
         }
         RequestData.getInstance(mContext).requestFrontData( ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeFrontData(),getMyRecyclerView(),page,null,isFirst(),true,false);
+=======
+        setSubscriber(page);
+    }
+    public void setSubscriber(int page){
+        RequestData.getInstance(mContext).requestFrontData( ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeFrontData(),getMyRecyclerView(),page,null,isFirst(),true);
+        if(page>1) {
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_loadmore_footer)).danger();
+        }else if(page==1){
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_refresh_header)).danger();
+        }
+>>>>>>> origin/master
     }
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {

@@ -1,13 +1,34 @@
 package com.example.jdk.restapp.Adapter;
 
 import android.content.Context;
+<<<<<<< HEAD
 import android.view.View;
 
 import com.example.jdk.restapp.ModelData.entity.Front;
+=======
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+
+import com.example.jdk.restapp.ModelData.entity.Base;
+import com.example.jdk.restapp.ModelData.entity.Front;
+import com.example.jdk.restapp.ModelData.entity.Meizi;
+>>>>>>> origin/master
 import com.example.jdk.restapp.ModelData.entity.MyAndroid;
 import com.example.jdk.restapp.ModelData.entity.URLTableData;
 import com.example.jdk.restapp.ModelData.entity.Video;
 import com.example.jdk.restapp.R;
+<<<<<<< HEAD
+=======
+import com.example.jdk.restapp.databinding.AndroidItemBinding;
+import com.example.jdk.restapp.databinding.CollectionItemBinding;
+import com.example.jdk.restapp.databinding.FrontItemBinding;
+import com.example.jdk.restapp.databinding.MeiziItemBinding;
+
+import java.util.ArrayList;
+>>>>>>> origin/master
 import java.util.Date;
 import java.util.List;
 
@@ -15,9 +36,17 @@ import java.util.List;
  * Created by JDK on 2016/9/30.
  */
 public class RecyclerViewDataAdapter extends RecyclerViewBaseAdapter {
+<<<<<<< HEAD
     private recyclerViewDataBindingItemOnClickListener myRecyclerViewDataBindingItemOnClick;
     public RecyclerViewDataAdapter(Context context, List dataList, int[] layoutIdArray,int variableId) {
         super(context, dataList,layoutIdArray, variableId);
+=======
+    private int[] mLayoutIdArray;
+    private recyclerViewDataBindingItemOnClickListener myRecyclerViewDataBindingItemOnClick;
+    public RecyclerViewDataAdapter(Context context, List dataList, int[] layoutIdArray,int variableId) {
+        super(context, dataList,layoutIdArray, variableId);
+        mLayoutIdArray=layoutIdArray;
+>>>>>>> origin/master
     }
     @Override
     public void getViewDataBinding(UniversalViewolder viewolder, final int position) {
