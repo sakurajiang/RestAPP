@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ff0000">
-    <ImageView
-        android:id="@+id/meizi_imageView"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.example.jdk.restapp.Utils.ChangeTimeFormat"/>
+        <import type="com.example.jdk.restapp.Utils.SplitUtils"/>
+        <variable
+            name="meizi"
+            type="com.example.jdk.restapp.ModelData.entity.Meizi"/>
+        <variable
+            name="video"
+            type="com.example.jdk.restapp.ModelData.entity.Video"/>
+    </data>
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        />
-    <TextView
-        android:id="@+id/video_TextView"
-        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="5dp">
+    <LinearLayout
+        android:id="@+id/meizi_item_ll"
+        android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hhh"/>
-</LinearLayout>
+        >
+        <ImageView
+            android:id="@+id/meizi_imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:transitionName="@string/jump_meizi"
+            app:imageURL="@{SplitUtils.splitWithComma(video.url)[1]}"
+            />
+        <RelativeLayout
+            android:id="@+id/video_item_id_rl"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/video_item_id_desc_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:maxLines="3"
+                android:text="@{SplitUtils.splitWithComma(video.desc)[0]}"
+                android:ellipsize="end"
+                />
+            <TextView
+                android:id="@+id/video_item_id_who_tv"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="@{video.who??@string/who_none}"
+                android:layout_below="@id/video_item_id_desc_tv"/>
+            <TextView
+                android:id="@+id/video_item_id_createtime"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="@{video.publishedAt}"
+                android:layout_below="@id/video_item_id_desc_tv"
+                android:layout_toRightOf="@id/video_item_id_who_tv"/>
+        </RelativeLayout>
+    </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>
