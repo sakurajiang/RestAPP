@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/webview_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        >
+       <include layout="@layout/show_webview_title"
+           android:layout_height="?attr/actionBarSize"
+           android:layout_width="match_parent"/>
+    </android.support.percent.PercentRelativeLayout>
+    <ProgressBar
+        android:id="@+id/show_webview_pb"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="2dp"
+        android:layout_below="@id/webview_linearlayout"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        />
+    <WebView
+        android:id="@+id/show_webview_wv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/show_webview_pb"
+        ></WebView>
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/rl"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_heightPercent="7%"
+     >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/md_grey_200"/>
+        <TextView
+            android:id="@+id/count_tv"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:textSize="16sp"
+            app:layout_widthPercent="80%"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageButton
+            android:id="@+id/interest_ib"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/count_tv"/>
+    </android.support.percent.PercentRelativeLayout>
+
+</android.support.percent.PercentRelativeLayout>

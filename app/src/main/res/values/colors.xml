@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#ce3d3a</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorLightCoffee">@color/md_brown_500</color>
+    <color name="colorDarkCoffee">@color/md_brown_700</color>
+    <color name="colorAccent3">@color/md_deep_orange_500</color>
+    <color name="blue">#5677fc</color>
+    <color name="red">#e51c23</color>
+    <color name="green">#259b24</color>
+    <color name="yellow">#ffeb3b</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#515151</color>
+    <color name="themeColor">#ffce3d3a</color>
+    <color name="toolbarTextColor">#ffffffff</color>
+    <color name="normalBackground">#fff2f4f5</color>
+    <color name="toolbarSubTextColor">#ffd4d4d4</color>
 </resources>
