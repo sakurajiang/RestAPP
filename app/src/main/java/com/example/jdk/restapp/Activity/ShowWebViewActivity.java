@@ -206,7 +206,16 @@ public class ShowWebViewActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         final int id = item.getItemId();
          if (id == R.id.action_share) {
+<<<<<<< HEAD
              ShareUtils.getInstance(this).share(urlTableData.getUrl(),"textvideo");
+=======
+<<<<<<< HEAD
+             ShareUtils.getInstance(this).share(urlTableData.getUrl(),"textvideo");
+=======
+             ShareUtils.getInstance(this).shareUrl(urlTableData.getUrl());
+             SnackBarUtils.makeShort(getWindow().getDecorView(),getResources().getString(R.string.share_successful)).danger();
+>>>>>>> origin/master
+>>>>>>> origin/master
         }
         return super.onOptionsItemSelected(item);
     }

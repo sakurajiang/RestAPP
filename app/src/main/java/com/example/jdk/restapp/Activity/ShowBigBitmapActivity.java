@@ -8,6 +8,13 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> origin/master
+>>>>>>> origin/master
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -173,7 +180,14 @@ public class ShowBigBitmapActivity extends BaseActivity{
                         public void call(Uri uri) {
                             Intent scannerIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri);
                             ShowBigBitmapActivity.this.sendBroadcast(scannerIntent);
+<<<<<<< HEAD
                             SnackBarUtils.makeShort(getWindow().getDecorView(), getResources().getString(R.string.save_meizi_successful)).danger();
+=======
+<<<<<<< HEAD
+                            SnackBarUtils.makeShort(getWindow().getDecorView(), getResources().getString(R.string.save_meizi_successful)).danger();
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
                         }
                     }, new Action1<Throwable>() {
                         @Override

@@ -1,11 +1,25 @@
 package com.example.jdk.restapp.Utils;
 
+<<<<<<< HEAD
 import android.app.Activity;
+=======
+<<<<<<< HEAD
+import android.app.Activity;
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+<<<<<<< HEAD
 import com.example.jdk.restapp.R;
+=======
+<<<<<<< HEAD
+import com.example.jdk.restapp.R;
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
 import com.squareup.picasso.Picasso;
 
 /**
@@ -20,6 +34,10 @@ public class ShareUtils {
         mContext=context;
         return LoadShareUtils.shareUtils;
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     public void share(String text,String type){
         Intent intent=new Intent();
         intent.setAction(Intent.ACTION_SEND);
@@ -36,13 +54,33 @@ public class ShareUtils {
                 SnackBarUtils.makeShort(((Activity)mContext).getWindow().getDecorView(), mContext.getResources().getString(R.string.type_worry)).danger();
         }
     }
+<<<<<<< HEAD
+=======
+=======
+     public  void shareUrl(String url){
+         Intent intent=new Intent();
+         intent.setAction(Intent.ACTION_SEND);
+         intent.putExtra(Intent.EXTRA_TEXT, url);
+         intent.setType("text/plain");
+         mContext.startActivity(Intent.createChooser(intent,"share"));
+     }
+>>>>>>> origin/master
+>>>>>>> origin/master
     public void shareImage(Uri uri){
         Intent intent=new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_STREAM, uri);
         intent.setType("image/*");
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+<<<<<<< HEAD
         mContext.startActivity(Intent.createChooser(intent,mContext.getResources().getString(R.string.share_image)));
+=======
+<<<<<<< HEAD
+        mContext.startActivity(Intent.createChooser(intent,mContext.getResources().getString(R.string.share_image)));
+=======
+        mContext.startActivity(Intent.createChooser(intent,"share image"));
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 
 }

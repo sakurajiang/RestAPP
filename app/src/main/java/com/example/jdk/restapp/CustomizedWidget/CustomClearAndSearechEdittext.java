@@ -6,6 +6,13 @@ import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> origin/master
+>>>>>>> origin/master
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -77,6 +84,10 @@ public class CustomClearAndSearechEdittext extends EditText implements View.OnFo
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         if(event.getAction()==MotionEvent.ACTION_DOWN) {
             return true;
         }
@@ -84,6 +95,22 @@ public class CustomClearAndSearechEdittext extends EditText implements View.OnFo
             return false;
         }
         if (event.getAction() == MotionEvent.ACTION_UP) {
+<<<<<<< HEAD
+=======
+=======
+        Log.e("log", "" + super.onTouchEvent(event));
+        if(event.getAction()==MotionEvent.ACTION_DOWN) {
+            Log.e("log",""+MotionEvent.ACTION_DOWN);
+            return true;
+        }
+        if(event.getAction()==MotionEvent.ACTION_MOVE) {
+            Log.e("log",""+MotionEvent.ACTION_MOVE);
+            return false;
+        }
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            Log.e("log", "onTouchEvent: ");
+>>>>>>> origin/master
+>>>>>>> origin/master
             if (getCompoundDrawables()[2] != null) {
                 boolean searchable=event.getX()>((getWidth()-getPaddingRight()+80));
                 boolean touchable = event.getX() > (getWidth() - getTotalPaddingRight())

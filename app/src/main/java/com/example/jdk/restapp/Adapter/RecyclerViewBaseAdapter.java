@@ -1,8 +1,20 @@
 package com.example.jdk.restapp.Adapter;
 
 import android.content.Context;
+<<<<<<< HEAD
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
+=======
+<<<<<<< HEAD
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
+=======
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+>>>>>>> origin/master
+>>>>>>> origin/master
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,6 +93,10 @@ public abstract class RecyclerViewBaseAdapter<T> extends RecyclerView.Adapter<Un
     }
     @Override
     public int getItemCount() {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         boolean b=mLayoutIdArray[0] == R.layout.collection_item;
         if(mLayoutIdArray[0] == R.layout.collection_item){
             return mDataList.size()==0?1:mDataList.size();
@@ -88,6 +104,12 @@ public abstract class RecyclerViewBaseAdapter<T> extends RecyclerView.Adapter<Un
             return mDataList.size();
 
         }
+<<<<<<< HEAD
+=======
+=======
+        return mDataList.size()==0?1:mDataList.size();
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 
     public interface onItemClickListener{

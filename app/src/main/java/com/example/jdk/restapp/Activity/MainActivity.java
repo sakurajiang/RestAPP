@@ -92,7 +92,15 @@ public class MainActivity extends BaseActivity implements CollectionFragment.col
                         switchFragment(currentFragment, collectionFragment);
                         break;
                     case R.id.navigation_share:
+<<<<<<< HEAD
                         ShareUtils.getInstance(MainActivity.this).share(getResources().getString(R.string.share_app_to_friends), "program");
+=======
+<<<<<<< HEAD
+                        ShareUtils.getInstance(MainActivity.this).share(getResources().getString(R.string.share_app_to_friends), "program");
+=======
+                        SnackBarUtils.makeShort(getWindow().getDecorView(), getResources().getString(R.string.share_failed)).danger();
+>>>>>>> origin/master
+>>>>>>> origin/master
                         break;
                     case R.id.navigation_about_project:
                         if (aboutProjectFragment == null) {

@@ -13,9 +13,18 @@ public class ChangeTimeFormat {
     @BindingConversion
     public static String changeToYearMonthDay(Date date){
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+<<<<<<< HEAD
         if(date==null){
             date=new Date();
         }
+=======
+<<<<<<< HEAD
+        if(date==null){
+            date=new Date();
+        }
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
         return simpleDateFormat.format(date);
     }
 

@@ -11,10 +11,21 @@ import android.view.ViewGroup;
 import com.example.jdk.restapp.HttpUtils.RequestData;
 import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
 import com.example.jdk.restapp.ModelData.entity.Base;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
 import com.example.jdk.restapp.ModelData.entity.Front;
 import com.example.jdk.restapp.R;
 import com.example.jdk.restapp.Utils.MyDecoration;
 import com.example.jdk.restapp.Utils.SPDataUtil;
+<<<<<<< HEAD
+=======
+=======
+import com.example.jdk.restapp.R;
+import com.example.jdk.restapp.Utils.MyDecoration;
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +34,20 @@ import java.util.List;
  * Created by JDK on 2016/8/10.
  */
 public class FrontFragment extends BaseFragment {
+<<<<<<< HEAD
     private List<Base> frontList;
     private static Context mContext;
     private boolean isCache=false;
+=======
+<<<<<<< HEAD
+    private List<Base> frontList;
+    private static Context mContext;
+    private boolean isCache=false;
+=======
+    private List<Base> myList;
+    private static Context mContext;
+>>>>>>> origin/master
+>>>>>>> origin/master
     public FrontFragment() {
         super(R.layout.fragment_watch_front);
     }
@@ -36,6 +58,10 @@ public class FrontFragment extends BaseFragment {
     }
 
     @Override
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     public void onAttach(Context context) {
         super.onAttach(context);
     }
@@ -84,6 +110,17 @@ public class FrontFragment extends BaseFragment {
         }else {
             frontList = new ArrayList<>();
         }
+<<<<<<< HEAD
+=======
+=======
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+    }@Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        myList=new ArrayList<>();
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
     @Override
     public void onDestroyView() {
@@ -97,6 +134,10 @@ public class FrontFragment extends BaseFragment {
 
     @Override
     public void getData(int page) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         setSubscriber(page,false);
     }
     public void setSubscriber(int page,boolean isRefresh){
@@ -107,6 +148,15 @@ public class FrontFragment extends BaseFragment {
         RequestData.getInstance(mContext).requestFrontData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchFrontData(page), getMyRecyclerView(), page, frontList,isFirst(),false,isCache);
         isCache=false;
 
+<<<<<<< HEAD
+=======
+=======
+        setSubscriber(page);
+    }
+    public void setSubscriber(int page){
+        RequestData.getInstance(mContext).requestFrontData( ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchFrontData(page),getMyRecyclerView(),page,myList,isFirst(),false);
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

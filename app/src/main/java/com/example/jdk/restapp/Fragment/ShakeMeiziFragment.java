@@ -17,7 +17,15 @@ import com.example.jdk.restapp.Utils.SnackBarUtils;
 /**
  * Created by JDK on 2016/8/4.
  */
+<<<<<<< HEAD
 public class ShakeMeiziFragment extends BaseFragment implements RequestData.shProgressinterfaceofShake{
+=======
+<<<<<<< HEAD
+public class ShakeMeiziFragment extends BaseFragment implements RequestData.shProgressinterfaceofShake{
+=======
+public class ShakeMeiziFragment extends BaseFragment {
+>>>>>>> origin/master
+>>>>>>> origin/master
     private static Context mContext;
     public ShakeMeiziFragment() {
         super(R.layout.fragment_shake_meizi);
@@ -50,13 +58,25 @@ public class ShakeMeiziFragment extends BaseFragment implements RequestData.shPr
 
     @Override
     public void getData(final int page) {
+<<<<<<< HEAD
         setSubscriber(page,false);
+=======
+<<<<<<< HEAD
+        setSubscriber(page,false);
+=======
+        setSubscriber(page);
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 
     /**
      * 这里的page的作用是用来判断snackbar的显示与否
      * @param page
      */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     public void setSubscriber(final int page,boolean isRefresh){
         if(isRefresh)
         swipeRefreshLayout.setRefreshing(false);
@@ -71,13 +91,34 @@ public class ShakeMeiziFragment extends BaseFragment implements RequestData.shPr
         RequestData.getInstance(mContext).requestMeiziData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeMeiziData(),
                 ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeRestVideoData(),getMyRecyclerView(),page,null,isFirst(),true,false);
 
+<<<<<<< HEAD
+=======
+=======
+    public void setSubscriber(final int page){
+        RequestData.getInstance(mContext).requestMeiziData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeMeiziData(),
+                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeRestVideoData(),getMyRecyclerView(),page,null,isFirst(),true);
+        if(page>1) {
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_loadmore_footer)).danger();
+        }else if(page==1){
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_refresh_header)).danger();
+        }
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+<<<<<<< HEAD
         if(isVisibleToUser)
             RequestData.getInstance(mContext).setSHProgressinterfaceofShake(this);
+=======
+<<<<<<< HEAD
+        if(isVisibleToUser)
+            RequestData.getInstance(mContext).setSHProgressinterfaceofShake(this);
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -85,6 +126,10 @@ public class ShakeMeiziFragment extends BaseFragment implements RequestData.shPr
         StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         staggeredGridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
         getMyRecyclerView().setLayoutManager(new LinearLayoutManager(getActivity()));
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
         InitListener();
         swipeRefreshLayout.post(new Runnable() {
             @Override
@@ -93,6 +138,13 @@ public class ShakeMeiziFragment extends BaseFragment implements RequestData.shPr
                 setSubscriber(0, false);
             }
         });
+<<<<<<< HEAD
+=======
+=======
+        getData(0);
+        InitListener();
+>>>>>>> origin/master
+>>>>>>> origin/master
     }
 
 }
