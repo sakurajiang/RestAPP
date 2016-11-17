@@ -11,60 +11,36 @@ import android.view.ViewGroup;
 
 import com.example.jdk.restapp.HttpUtils.RequestData;
 import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
-import com.example.jdk.restapp.ModelData.entity.Base;
 import com.example.jdk.restapp.R;
-import com.example.jdk.restapp.Utils.SPDataUtil;
-
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.jdk.restapp.Utils.SnackBarUtils;
 
 /**
  * Created by JDK on 2016/8/4.
  */
-public class MeiziFragment extends BaseFragment {
+public class ShakeMeiziFragment extends BaseFragment implements RequestData.shProgressinterfaceofShake{
     private static Context mContext;
-    private List<Base> meiziList;
-    private boolean isCache=false;
-    public MeiziFragment() {
-        super(R.layout.fragment_watch_meizi);
+    public ShakeMeiziFragment() {
+        super(R.layout.fragment_shake_meizi);
     }
-    public static MeiziFragment newInstance(Context context){
-        MeiziFragment meiziFragment=new MeiziFragment();
+    public static ShakeMeiziFragment newInstance(Context context){
+        ShakeMeiziFragment meiziFragment=new ShakeMeiziFragment();
         mContext=context;
         return meiziFragment;
     }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        meiziList=SPDataUtil.getFirstPageGirls(getString(R.string.sharedPreferences_picture),mContext);
-        if(meiziList!=null&&meiziList.size()!=0) {
-           isCache=true;
-        }else{
-            meiziList = new ArrayList<>();
-        }
 
     }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+            return super.onCreateView(inflater, container, savedInstanceState);
     }
-       @Override
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
 
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     @Override
@@ -73,45 +49,35 @@ public class MeiziFragment extends BaseFragment {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
-    @Override
     public void getData(final int page) {
         setSubscriber(page,false);
     }
+
+    /**
+     * 这里的page的作用是用来判断snackbar的显示与否
+     * @param page
+     */
     public void setSubscriber(final int page,boolean isRefresh){
-        if(isRefresh) {
-            SPDataUtil.saveFirstPageGirls(mContext, meiziList);
-            meiziList.clear();
+        if(isRefresh)
+        swipeRefreshLayout.setRefreshing(false);
+        //这里设置return是因为当在摇一摇界面的时候刷新的话直接跳出，不请求数据，节省流量。
+        if(page>1) {
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_loadmore_footer)).danger();
+            return;
+        }else if(page==1){
+            SnackBarUtils.makeLong(getActivity().getWindow().getDecorView(), getResources().getString(R.string.shake_refresh_header)).danger();
+            return;
         }
-        RequestData.getInstance(mContext).requestMeiziData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchMeiziData(page),
-                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchRestVideoData(page), getMyRecyclerView(), page, meiziList, isFirst(), false,isCache);
-        isCache=false;
+        RequestData.getInstance(mContext).requestMeiziData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeMeiziData(),
+                ReturnRetrofit.getInstance().getMyGankApiRetrofit().getShakeRestVideoData(),getMyRecyclerView(),page,null,isFirst(),true,false);
+
     }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
-            RequestData.getInstance(mContext).setSHProgressinterface(this);
-        }
-
+        if(isVisibleToUser)
+            RequestData.getInstance(mContext).setSHProgressinterfaceofShake(this);
     }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -124,8 +90,9 @@ public class MeiziFragment extends BaseFragment {
             @Override
             public void run() {
                 swipeRefreshLayout.setRefreshing(true);
-                setSubscriber(1, false);
+                setSubscriber(0, false);
             }
         });
     }
+
 }

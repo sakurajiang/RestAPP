@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.example.jdk.restapp.HttpUtils.RequestData;
 import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
 import com.example.jdk.restapp.ModelData.entity.Base;
+import com.example.jdk.restapp.ModelData.entity.Front;
 import com.example.jdk.restapp.R;
 import com.example.jdk.restapp.Utils.MyDecoration;
 import com.example.jdk.restapp.Utils.SPDataUtil;
@@ -18,29 +19,26 @@ import com.example.jdk.restapp.Utils.SPDataUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-
 /**
- * Created by JDK on 2016/8/4.
+ * Created by JDK on 2016/8/10.
  */
-public class AndroidFragment extends BaseFragment {
-    private List<Base> androidList;
-    static Context mContext;
+public class FrontFragment extends BaseFragment {
+    private List<Base> frontList;
+    private static Context mContext;
     private boolean isCache=false;
+    public FrontFragment() {
+        super(R.layout.fragment_watch_front);
+    }
+    public static FrontFragment newInstance(Context context){
+        FrontFragment frontFragment=new FrontFragment();
+        mContext=context;
+        return frontFragment;
+    }
 
-    public AndroidFragment() {
-        super(R.layout.fragment_watch_android);
-    }
-    public static AndroidFragment newInstance(Context context){
-        AndroidFragment androidFragment=new AndroidFragment();
-        mContext = context;
-        return androidFragment;
-    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
-
     @Override
     public void onDetach() {
         super.onDetach();
@@ -56,7 +54,10 @@ public class AndroidFragment extends BaseFragment {
         super.onDestroy();
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     @Override
     public void onStart() {
@@ -68,17 +69,26 @@ public class AndroidFragment extends BaseFragment {
         super.onStop();
     }
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        androidList=SPDataUtil.getFirstPageGirls(getString(R.string.sharedPreferences_android),mContext);
-        if(androidList!=null&&androidList.size()!=0){
-            isCache=true;
-        }else {
-            androidList = new ArrayList<>();
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+            RequestData.getInstance(mContext).setSHProgressinterface(this);
         }
 
+    }@Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        frontList =SPDataUtil.getFirstPageGirls(getString(R.string.sharedPreferences_front),mContext);
+        if(frontList !=null&& frontList.size()!=0){
+            isCache=true;
+        }else {
+            frontList = new ArrayList<>();
+        }
     }
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -87,36 +97,17 @@ public class AndroidFragment extends BaseFragment {
 
     @Override
     public void getData(int page) {
-       setSubscriber(page,false);
+        setSubscriber(page,false);
     }
-    @Override
     public void setSubscriber(int page,boolean isRefresh){
         if(isRefresh) {
-            SPDataUtil.saveFirstPageGirls(mContext,androidList);
-            androidList.clear();
+            SPDataUtil.saveFirstPageGirls(mContext, frontList);
+            frontList.clear();
         }
-        RequestData.getInstance(mContext).requestAndroidData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchAndroidData(page),getMyRecyclerView(),page,androidList,isFirst(),false,isCache);
+        RequestData.getInstance(mContext).requestFrontData(ReturnRetrofit.getInstance().getMyGankApiRetrofit().getWatchFrontData(page), getMyRecyclerView(), page, frontList,isFirst(),false,isCache);
         isCache=false;
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
-            RequestData.getInstance(mContext).setSHProgressinterface(this);
-        }
 
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -124,6 +115,9 @@ public class AndroidFragment extends BaseFragment {
         getMyRecyclerView().addItemDecoration(new MyDecoration(getActivity(), MyDecoration.VERTICAL_LIST));
         getData(1);
         InitListener();
-}
+    }
+
+
 
 }
+
