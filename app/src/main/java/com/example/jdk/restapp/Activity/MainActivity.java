@@ -1,190 +1,73 @@
 package com.example.jdk.restapp.Activity;
 
-import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.example.jdk.restapp.Utils.ShareUtils;
-import com.github.ikidou.fragmentBackHandler.BackHandlerHelper;
-import com.example.jdk.restapp.Fragment.AboutAuthorFragment;
-import com.example.jdk.restapp.Fragment.AboutProjectFragment;
-import com.example.jdk.restapp.Fragment.CollectionFragment;
-import com.example.jdk.restapp.Fragment.WatchAndShakeFragment;
+import com.example.jdk.restapp.Adapter.AdapterInditorViewPage;
+import com.example.jdk.restapp.Fragment.AndroidFragment;
+import com.example.jdk.restapp.Fragment.MeiziFragment;
+import com.example.jdk.restapp.HttpUtils.ReturnRetrofit;
+import com.example.jdk.restapp.ModelData.MeiziData;
 import com.example.jdk.restapp.R;
-import com.example.jdk.restapp.Utils.SnackBarUtils;
+import com.squareup.picasso.Picasso;
+import com.viewpagerindicator.TabPageIndicator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.OnPageChange;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
-
-/**
- * Created by JDK on 2016/8/28.
- */
-public class MainActivity extends BaseActivity implements CollectionFragment.collectionDrawerIconListener,WatchAndShakeFragment.watchAndShakeFragmentListener,AboutProjectFragment.aboutProjectDrawerIconListener,AboutAuthorFragment.aboutAuthorDrawerIconListener {
-    @Bind(R.id.drawer)
-    DrawerLayout mDrawerLayout;
-    @Bind(R.id.navigation_view)
-    NavigationView mNavigationView;
-    private boolean isOpen;
-    private WatchAndShakeFragment watchAndShakeFragment;
-    private CollectionFragment collectionFragment;
-    private AboutProjectFragment aboutProjectFragment;
-    private AboutAuthorFragment aboutAuthorFragment;
-    private Fragment currentFragment;
-    private long lastBackKeyDownTick = 0;
-    private static final long MAX_DOUBLE_BACK_DURATION = 1500;
+public class MainActivity extends FragmentActivity {
+    ImageView imageView;
+    Fragment meiziFragment;
+    List<Fragment> fragmentList;
+    String [] TITLE;
+    ViewPager myViewPager;
+    TabPageIndicator myTabPageIndicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        showDefaultFragment();
-        mNavigationView.setItemIconTintList(null);
-        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
+        InitVariable();
+        myTabPageIndicator= (TabPageIndicator) findViewById(R.id.myIndicatorViewPage);
+        myViewPager= (ViewPager) findViewById(R.id.myViewPager);
+        InitListener();
+        myViewPager.setAdapter(new AdapterInditorViewPage(getSupportFragmentManager(),fragmentList,TITLE));
+        myTabPageIndicator.setViewPager(myViewPager);
+    }
+    public void InitVariable(){
+        meiziFragment=new MeiziFragment(this);
+        fragmentList=new ArrayList<Fragment>();
+        fragmentList.add(meiziFragment);
+        TITLE=new String[]{"MEIZI"};
+    }
+   public void InitListener(){
+       myTabPageIndicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+           @Override
+           public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            }
+           }
 
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                isOpen = true;
-            }
+           @Override
+           public void onPageSelected(int position) {
+               Toast.makeText(getApplicationContext(), TITLE[position], Toast.LENGTH_SHORT).show();
+           }
 
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                isOpen = false;
-            }
+           @Override
+           public void onPageScrollStateChanged(int state) {
 
-            @Override
-            public void onDrawerStateChanged(int newState) {
-            }
-        });
-        initNavigationViewItemSelected();
+           }
+       });
+   }
 
-    }
-    public void showDefaultFragment(){
-        if(watchAndShakeFragment ==null){
-            watchAndShakeFragment = WatchAndShakeFragment.newInstance();
-        }
-        addFragment(R.id.activity_main, watchAndShakeFragment);
-        currentFragment= watchAndShakeFragment;
-    }
-    public void initNavigationViewItemSelected(){
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_sort:
-                        if (watchAndShakeFragment == null) {
-                            watchAndShakeFragment = WatchAndShakeFragment.newInstance();
-                        }
-                        switchFragment(currentFragment, watchAndShakeFragment);
-                        break;
-                    case R.id.navigation_collection:
-                        if (collectionFragment == null) {
-                            collectionFragment = CollectionFragment.newInstance(MainActivity.this);
-                        }
-                        switchFragment(currentFragment, collectionFragment);
-                        break;
-                    case R.id.navigation_share:
-<<<<<<< HEAD
-                        ShareUtils.getInstance(MainActivity.this).share(getResources().getString(R.string.share_app_to_friends), "program");
-=======
-<<<<<<< HEAD
-                        ShareUtils.getInstance(MainActivity.this).share(getResources().getString(R.string.share_app_to_friends), "program");
-=======
-                        SnackBarUtils.makeShort(getWindow().getDecorView(), getResources().getString(R.string.share_failed)).danger();
->>>>>>> origin/master
->>>>>>> origin/master
-                        break;
-                    case R.id.navigation_about_project:
-                        if (aboutProjectFragment == null) {
-                            aboutProjectFragment = AboutProjectFragment.newInstance();
-                        }
-                        switchFragment(currentFragment, aboutProjectFragment);
-                        break;
-                    case R.id.navigation_about_author:
-                        if (aboutAuthorFragment == null) {
-                            aboutAuthorFragment = new AboutAuthorFragment();
-                        }
-                        switchFragment(currentFragment, aboutAuthorFragment);
-                        break;
-
-                }
-                item.setChecked(true);
-                mDrawerLayout.closeDrawers();
-                return false;
-            }
-        });
-    }
-    public void switchFragment(Fragment from,Fragment to){
-        if(currentFragment!=to){
-            currentFragment=to;
-            if(!to.isAdded()){
-                getFragmentTransaction().hide(from).add(R.id.activity_main,to).commit();
-            }else{
-                getFragmentTransaction().hide(from).show(to).commit();
-            }
-        }
-    }
-    @Override
-    public void collectionDrawerIcon() {
-        if (!isOpen) {
-            //LEFT和RIGHT指的是现存DrawerLayout的方向
-            mDrawerLayout.openDrawer(Gravity.LEFT);
-        }
-    }
-    @Override
-    public void watchAndShakeFragment() {
-        if (!isOpen) {
-            //LEFT和RIGHT指的是现存DrawerLayout的方向
-            mDrawerLayout.openDrawer(Gravity.LEFT);
-        }
-    }
-    @Override
-    public void onBackPressed() {
-        long currentTick = System.currentTimeMillis();
-        boolean b=!BackHandlerHelper.handleBackPress(watchAndShakeFragment);
-        if (!BackHandlerHelper.handleBackPress(this)) {
-            if (isOpen) {
-                mDrawerLayout.closeDrawer(mNavigationView);
-                isOpen = false;
-            } else {
-                if (currentTick - lastBackKeyDownTick > MAX_DOUBLE_BACK_DURATION) {
-                    SnackBarUtils.makeShort(getWindow().getDecorView(), "再按一次退出").danger();
-                    lastBackKeyDownTick = currentTick;
-                } else {
-                    finish();
-                    System.exit(0);
-                }
-            }
-        }
-    }
-    @Override
-    public void aboutProjectDrawerIcon() {
-        if (!isOpen) {
-            //LEFT和RIGHT指的是现存DrawerLayout的方向
-            mDrawerLayout.openDrawer(Gravity.LEFT);
-        }
-    }
-
-    @Override
-    public void aboutAuthorDrawerIcon() {
-        if (!isOpen) {
-            //LEFT和RIGHT指的是现存DrawerLayout的方向
-            mDrawerLayout.openDrawer(Gravity.LEFT);
-        }
-    }
-    public void settingOnClick(View v){
-        SnackBarUtils.makeShort(v,getResources().getString(R.string.onClick_setting)).warning();
-    }
-    public void quitOnClick(View v){
-        finish();
-        System.exit(0);
-    }
 }
