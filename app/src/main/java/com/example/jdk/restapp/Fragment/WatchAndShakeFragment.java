@@ -23,11 +23,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.github.ikidou.fragmentBackHandler.FragmentBackHandler;
 import com.example.jdk.restapp.Activity.ShowWebViewActivity;
 import com.example.jdk.restapp.CustomizedWidget.CustomClearAndSearechEdittext;
 import com.example.jdk.restapp.ModelData.entity.URLTableData;
 import com.example.jdk.restapp.R;
+import com.example.jdk.restapp.Utils.FragmentBackHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ import butterknife.ButterKnife;
 /**
  * Created by JDK on 2016/8/26.
  */
-public class WatchAndShakeFragment extends Fragment implements View.OnClickListener,ViewPager.OnPageChangeListener,CustomClearAndSearechEdittext.OnClickSearchListener,TextView.OnEditorActionListener,FragmentBackHandler{
+public class WatchAndShakeFragment extends Fragment implements View.OnClickListener,ViewPager.OnPageChangeListener,CustomClearAndSearechEdittext.OnClickSearchListener,TextView.OnEditorActionListener,FragmentBackHandler {
     @Bind(R.id.tool_bar)
      Toolbar toolbar;
     @Bind(R.id.drawerIcon)

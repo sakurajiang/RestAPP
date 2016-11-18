@@ -32,7 +32,6 @@ import com.example.jdk.restapp.Utils.SplitUtils;
 
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscriber;

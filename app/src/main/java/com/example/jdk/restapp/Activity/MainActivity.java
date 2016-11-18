@@ -8,8 +8,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.jdk.restapp.Utils.BackHandlerHelper;
 import com.example.jdk.restapp.Utils.ShareUtils;
-import com.github.ikidou.fragmentBackHandler.BackHandlerHelper;
 import com.example.jdk.restapp.Fragment.AboutAuthorFragment;
 import com.example.jdk.restapp.Fragment.AboutProjectFragment;
 import com.example.jdk.restapp.Fragment.CollectionFragment;
@@ -141,7 +141,6 @@ public class MainActivity extends BaseActivity implements CollectionFragment.col
     @Override
     public void onBackPressed() {
         long currentTick = System.currentTimeMillis();
-        boolean b=!BackHandlerHelper.handleBackPress(watchAndShakeFragment);
         if (!BackHandlerHelper.handleBackPress(this)) {
             if (isOpen) {
                 mDrawerLayout.closeDrawer(mNavigationView);
