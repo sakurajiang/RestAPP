@@ -40,8 +40,6 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class ShowBigBitmapActivity extends BaseActivity{
     @Bind(R.id.big_Image)
     ImageView big_ImageView;
-    @Bind(R.id.activity_showbigbitmap)
-    LinearLayout linearLayout;
     @Bind(R.id.webview_toolbar)
     Toolbar big_picture_toolbar;
     @Bind(R.id.desc_tv_showwebview)
